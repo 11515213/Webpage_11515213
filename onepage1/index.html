@@ -1,612 +1,2922 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="小兔子咖啡，為手沖咖啡愛好者挑選當季精品咖啡豆，讓每一杯都清澈、明亮、值得細品。">
-  <title>小兔子咖啡｜讓風味，慢慢抵達</title>
+  <meta name="description" content="傳說對決 10 週年咖啡限定 - 頂級衣索比亞產區咖啡豆遇上智慧自動咖啡機！45秒極速現磨現萃，排位上分能量必備，隨杯贈送10週年限定英雄造型虛寶與典藏周邊。">
+  <meta name="author" content="李柏賢 (11515213)">
+  <!-- 網頁規格來源：WebSpec_11515213/specs/onepage1.md -->
+  <!-- 網站名稱：傳說對決10週年咖啡限定 | 用途：自動咖啡機 | 目標受眾：喜歡傳說對決與咖啡的愛好者 | 品牌風格：衣索比亞咖啡豆 | 品牌顏色：紫色 | 功能：吸引客戶消費咖啡與傳說限定周邊 -->
+  <title>傳說對決 10 週年咖啡限定 ｜ 衣索比亞精品原豆 × 智慧無人自動咖啡機</title>
+
+  <!-- Google Fonts: 奢華冒險字型 + 繁中無襯線與襯線字體 + 遙測數據字型 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=Noto+Serif+TC:wght@500;600;700;900&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Noto+Sans+TC:wght@300;400;500;600;700;900&family=Noto+Serif+TC:wght@600;700;900&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+
   <style>
+    /* ==========================================================================
+       1. 設計系統與全域變數 (Design Tokens & Color Palette: 紫色電競奢華調)
+       ========================================================================== */
     :root {
-      --navy: #062742;
-      --blue: #0c5b95;
-      --sky: #75c6e8;
-      --mist: #eaf5f7;
-      --cream: #fbfaf6;
-      --ink: #122534;
-      --muted: #607482;
-      --line: #d7e4e8;
-      --sand: #e5b66b;
-      --shadow: 0 18px 50px rgba(6, 39, 66, .13);
+      /* 品牌主色系：神秘尊爵紫與霓虹紫光 */
+      --purple-darkest: #0c0517;    /* 極致深邃黑紫 */
+      --purple-base: #170b2c;       /* 品牌底色深紫 */
+      --purple-surface: #22123f;    /* 卡片與元件底色 */
+      --purple-surface-light: #32195a; /* 卡片懸停與次級區塊 */
+      --purple-border: #4a2782;     /* 紫色邊框 */
+      --purple-brand: #7c3aed;      /* 經典傳說紫 */
+      --purple-neon: #9333ea;       /* 亮紫高光 */
+      --purple-glow: #a855f7;       /* 霓虹紫光暈 */
+      --purple-light: #f3e8ff;      /* 極淺紫文字背景 */
+      --purple-cyan: #c084fc;       /* 柔紫輔助色 */
+
+      /* 點綴色系：勝利金 (傳說排位榮耀金色 & 咖啡烘焙琥珀金) */
+      --gold-primary: #f59e0b;
+      --gold-glow: #fbbf24;
+      --gold-dark: #b45309;
+      --gold-light: #fef3c7;
+
+      /* 能量藍與狀態色 */
+      --energy-cyan: #38bdf8;
+      --success: #10b981;
+      --danger: #ef4444;
+
+      /* 文字顏色 */
+      --text-white: #ffffff;
+      --text-main: #f8fafc;
+      --text-muted: #cbd5e1;
+      --text-dim: #94a3b8;
+
+      /* 字型系統 */
+      --font-display: "Cinzel", "Noto Serif TC", serif;
+      --font-cyber: "Rajdhani", sans-serif;
+      --font-sans: "Noto Sans TC", sans-serif;
+      --font-serif: "Noto Serif TC", serif;
+
+      /* 陰影與圓角 */
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 22px;
+      --radius-full: 9999px;
+
+      --glow-purple: 0 0 25px rgba(168, 85, 247, 0.45);
+      --glow-gold: 0 0 25px rgba(245, 158, 11, 0.45);
+      --card-shadow: 0 16px 36px rgba(10, 4, 20, 0.65);
+      --transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
+    /* 基本重置 */
+    *, *::before, *::after {
+      box-sizing: border-box;
       margin: 0;
-      background: var(--cream);
-      color: var(--ink);
-      font-family: "Noto Sans TC", sans-serif;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
       font-size: 16px;
-      line-height: 1.7;
     }
-    a { color: inherit; text-decoration: none; }
-    button, input { font: inherit; }
-    button { cursor: pointer; }
-    :focus-visible { outline: 3px solid var(--sky); outline-offset: 4px; }
 
-    .wrap { width: min(1120px, calc(100% - 48px)); margin-inline: auto; }
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--purple-darkest);
+      color: var(--text-main);
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      background-image: 
+        radial-gradient(circle at 15% 10%, rgba(124, 58, 237, 0.18), transparent 40%),
+        radial-gradient(circle at 85% 60%, rgba(168, 85, 247, 0.12), transparent 45%),
+        radial-gradient(circle at 50% 90%, rgba(245, 158, 11, 0.08), transparent 40%);
+      background-attachment: fixed;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    button {
+      font-family: inherit;
+      border: none;
+      cursor: pointer;
+      outline: none;
+      transition: var(--transition);
+    }
+
+    img, svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      width: min(1200px, calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 100px 0;
+      position: relative;
+    }
+
+    /* 區塊共通標題 */
+    .section-header {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 56px;
+    }
+
     .eyebrow {
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: 12px;
-      margin: 0 0 18px;
-      color: var(--blue);
-      font-size: 11px;
+      gap: 10px;
+      font-family: var(--font-cyber);
+      font-size: 0.95rem;
       font-weight: 700;
-      letter-spacing: .18em;
+      letter-spacing: 0.22em;
+      color: var(--gold-glow);
+      text-transform: uppercase;
+      margin-bottom: 12px;
     }
-    .eyebrow::before { width: 28px; height: 1px; background: currentColor; content: ""; }
+
+    .eyebrow::before, .eyebrow::after {
+      content: "";
+      width: 24px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold-glow));
+    }
+    .eyebrow::after {
+      background: linear-gradient(90deg, var(--gold-glow), transparent);
+    }
+
     .section-title {
-      margin: 0;
-      font-family: "Noto Serif TC", serif;
-      font-size: clamp(30px, 4vw, 46px);
-      font-weight: 700;
-      letter-spacing: .045em;
-      line-height: 1.28;
+      font-family: var(--font-serif);
+      font-size: clamp(2.1rem, 3.8vw, 3rem);
+      font-weight: 900;
+      color: var(--text-white);
+      line-height: 1.3;
+      margin-bottom: 16px;
+      text-shadow: 0 2px 14px rgba(124, 58, 237, 0.5);
     }
-    .accent { color: var(--sand); }
-    .section-copy { margin: 18px 0 0; color: var(--muted); }
-    .button, .text-link {
+
+    .section-title span.highlight {
+      background: linear-gradient(135deg, #f59e0b, #fbbf24, #c084fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .section-desc {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    /* 標籤小藥丸 */
+    .tag-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .tag-purple {
+      background: rgba(168, 85, 247, 0.2);
+      border: 1px solid rgba(168, 85, 247, 0.5);
+      color: #e9d5ff;
+    }
+
+    .tag-gold {
+      background: rgba(245, 158, 11, 0.2);
+      border: 1px solid rgba(245, 158, 11, 0.6);
+      color: var(--gold-glow);
+    }
+
+    /* 按鈕樣式 */
+    .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 50px;
-      padding: 11px 23px;
-      border: 1px solid transparent;
-      border-radius: 2px;
-      font-size: 14px;
-      font-weight: 600;
-      letter-spacing: .03em;
-      transition: background-color .25s ease, color .25s ease, border-color .25s ease, transform .25s ease;
+      gap: 10px;
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      position: relative;
+      overflow: hidden;
     }
-    .button:hover, .text-link:hover { transform: translateY(-2px); }
-    .button-primary { background: var(--sand); color: var(--navy); }
-    .button-primary:hover { background: #f0ca84; }
-    .button-outline { border-color: rgba(255,255,255,.8); color: #fff; }
-    .button-outline:hover { background: #fff; color: var(--navy); }
 
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold-primary), var(--gold-glow));
+      color: var(--purple-darkest);
+      box-shadow: 0 4px 18px rgba(245, 158, 11, 0.35);
+    }
+
+    .btn-gold:hover {
+      background: linear-gradient(135deg, var(--gold-glow), #ffffff);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(245, 158, 11, 0.6);
+    }
+
+    .btn-purple {
+      background: linear-gradient(135deg, var(--purple-brand), var(--purple-neon));
+      color: var(--text-white);
+      box-shadow: 0 4px 18px rgba(124, 58, 237, 0.4);
+    }
+
+    .btn-purple:hover {
+      background: linear-gradient(135deg, var(--purple-neon), #c084fc);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(168, 85, 247, 0.6);
+    }
+
+    .btn-outline-purple {
+      background: rgba(124, 58, 237, 0.12);
+      border: 1.5px solid var(--purple-glow);
+      color: #e9d5ff;
+    }
+
+    .btn-outline-purple:hover {
+      background: rgba(168, 85, 247, 0.25);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: var(--glow-purple);
+    }
+
+    /* ==========================================================================
+       2. 導覽列 (Navbar & Top Bar)
+       ========================================================================== */
     .site-header {
-      position: absolute;
-      z-index: 10;
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      border-bottom: 1px solid rgba(255,255,255,.27);
+      z-index: 1000;
+      background: rgba(12, 5, 23, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(168, 85, 247, 0.22);
+      transition: var(--transition);
     }
+
+    .announcement-bar {
+      background: linear-gradient(90deg, #4c1d95, #7c3aed, #b45309, #7c3aed);
+      background-size: 200% 100%;
+      animation: bannerShift 10s ease infinite;
+      color: #fff;
+      font-size: 0.82rem;
+      padding: 6px 16px;
+      text-align: center;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    @keyframes bannerShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
     .navbar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      min-height: 78px;
-      gap: 24px;
+      height: 76px;
     }
-    .brand { display: inline-flex; align-items: center; gap: 10px; color: #fff; }
-    .brand-mark {
-      display: grid;
-      width: 29px;
-      height: 29px;
-      place-items: center;
-      border: 1px solid var(--sky);
-      border-radius: 50%;
-      color: var(--sky);
-      font-family: "Playfair Display", serif;
-      font-size: 17px;
-      line-height: 1;
-    }
-    .brand-copy { display: grid; line-height: 1.1; }
-    .brand-copy strong { font-size: 14px; font-weight: 600; letter-spacing: .08em; }
-    .brand-copy small { margin-top: 4px; color: var(--sky); font-size: 8px; letter-spacing: .15em; }
-    .nav-links { display: flex; align-items: center; gap: 25px; }
-    .nav-links a { position: relative; color: rgba(255,255,255,.92); font-size: 13px; font-weight: 500; white-space: nowrap; }
-    .nav-links a:not(.nav-cta)::after {
-      position: absolute;
-      right: 0;
-      bottom: -7px;
-      width: 0;
-      height: 1px;
-      background: var(--sky);
-      content: "";
-      transition: width .25s ease;
-    }
-    .nav-links a:not(.nav-cta):hover::after { right: auto; left: 0; width: 100%; }
-    .nav-links .nav-cta { padding: 7px 12px; border: 1px solid rgba(255,255,255,.78); }
-    .nav-links .nav-cta:hover { background: #fff; color: var(--navy); }
-    .menu-toggle { display: none; padding: 4px; border: 0; background: transparent; color: #fff; font-size: 24px; line-height: 1; }
 
-    .hero {
-      position: relative;
+    .brand-logo {
       display: flex;
-      min-height: 704px;
-      overflow: hidden;
-      align-items: stretch;
-      background:
-        radial-gradient(circle at 85% 26%, rgba(117,198,232,.35) 0, rgba(117,198,232,.08) 18%, transparent 43%),
-        linear-gradient(135deg, #062742 0%, #062742 58%, #0a4168 100%);
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo-badge {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #7c3aed, #f59e0b);
+      padding: 2px;
+      box-shadow: var(--glow-purple);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-inner {
+      width: 100%;
+      height: 100%;
+      background: var(--purple-base);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold-glow);
+    }
+
+    .brand-title-wrap h1 {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      line-height: 1.1;
       color: #fff;
     }
-    .hero::after {
-      position: absolute;
-      z-index: 0;
-      right: -18vw;
-      bottom: -22vw;
-      width: 50vw;
-      height: 50vw;
-      border: 1px solid rgba(117,198,232,.13);
-      border-radius: 50%;
-      content: "";
+
+    .brand-title-wrap h1 span {
+      color: var(--gold-glow);
     }
-    .hero-grid {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: 1.02fr .98fr;
-      gap: 45px;
-      align-items: center;
-      padding-top: 122px;
-      padding-bottom: 72px;
-    }
-    .hero-content { max-width: 560px; }
-    .hero .eyebrow { color: var(--sky); }
-    .hero-title {
-      max-width: 540px;
-      margin: 0;
-      font-family: "Noto Serif TC", serif;
-      font-size: clamp(42px, 5.5vw, 68px);
+
+    .brand-sub {
+      font-family: var(--font-cyber);
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      color: #c084fc;
+      text-transform: uppercase;
       font-weight: 700;
-      letter-spacing: .04em;
-      line-height: 1.22;
     }
-    .hero-title .sky-word { color: var(--sky); }
-    .hero-lede { max-width: 490px; margin: 25px 0 0; color: rgba(255,255,255,.76); }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
-    .hero-meta { margin: 27px 0 0; color: var(--sky); font-size: 10px; font-weight: 700; letter-spacing: .18em; }
-    .scroll-note { display: flex; align-items: center; gap: 10px; margin: 53px 0 0; color: rgba(255,255,255,.55); font-size: 9px; letter-spacing: .18em; }
-    .scroll-note::before { width: 38px; height: 1px; background: rgba(255,255,255,.45); content: ""; }
 
-    .hero-art {
+    .nav-links {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      gap: 28px;
+    }
+
+    .nav-link {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-muted);
       position: relative;
-      width: min(100%, 400px);
-      height: 300px;
-      min-height: 0;
-      margin-left: auto;
-      overflow: visible;
-      aspect-ratio: auto;
-      border: 0;
-      background: transparent;
-      box-shadow: none;
+      padding: 6px 0;
     }
-    .hero-photo { width: 400px; height: 300px; object-fit: cover; box-shadow: 24px 24px 0 rgba(117,198,232,.13), var(--shadow); }
-    .window-frame { position: absolute; inset: 0; border: 12px solid #e8d4ae; box-shadow: inset 0 0 0 2px rgba(6,39,66,.18); }
-    .window-frame::before, .window-frame::after { position: absolute; background: rgba(6,39,66,.25); content: ""; }
-    .window-frame::before { top: 0; bottom: 0; left: 49%; width: 4px; }
-    .window-frame::after { top: 46%; right: 0; left: 0; height: 4px; }
-    .sun { position: absolute; top: 16%; right: 17%; width: 77px; height: 77px; border-radius: 50%; background: #fff2be; box-shadow: 0 0 45px 22px rgba(255,228,150,.42); }
-    .mountain { position: absolute; bottom: 28%; width: 75%; height: 36%; clip-path: polygon(0 100%, 35% 15%, 48% 50%, 63% 0, 100% 100%); background: #497b83; opacity: .9; }
-    .mountain.one { left: -12%; }
-    .mountain.two { right: -27%; bottom: 27%; background: #30616b; transform: scaleX(-1); opacity: .75; }
-    .tabletop { position: absolute; right: -8%; bottom: -7%; left: -8%; height: 33%; background: linear-gradient(#643e2e 0%, #3d251e 100%); transform: perspective(200px) rotateX(10deg); }
-    .chair { position: absolute; right: 7%; bottom: 18%; width: 100px; height: 112px; border: 12px solid #543126; border-bottom: 0; border-radius: 48px 48px 0 0; opacity: .8; }
-    .chair::after { position: absolute; bottom: -75px; left: 14px; width: 8px; height: 75px; background: #543126; box-shadow: 53px 0 #543126; content: ""; }
-    .coffee-vessel { position: absolute; bottom: 14%; left: 28%; width: 112px; height: 105px; }
-    .coffee-vessel .dripper { position: absolute; top: 0; left: 29px; width: 53px; height: 45px; border: 3px solid #d8e7e1; border-radius: 5px 5px 22px 22px; background: linear-gradient(135deg, rgba(222,246,240,.75), rgba(124,180,181,.2)); clip-path: polygon(0 0, 100% 0, 78% 100%, 22% 100%); }
-    .coffee-vessel .carafe { position: absolute; bottom: 0; left: 17px; width: 78px; height: 68px; border: 3px solid #d8e7e1; border-radius: 10px 10px 23px 23px; background: linear-gradient(to top, rgba(56,29,19,.82) 0 38%, rgba(190,228,227,.24) 39%); }
-    .coffee-vessel .carafe::before { position: absolute; top: -20px; left: 24px; width: 26px; height: 22px; border: 3px solid #d8e7e1; border-bottom: 0; border-radius: 50% 50% 0 0; content: ""; }
-    .steam { position: absolute; bottom: 59%; left: 49%; width: 23px; height: 58px; border-left: 2px solid rgba(255,255,255,.63); border-radius: 50%; transform: rotate(16deg); }
-    .steam::after { position: absolute; top: -5px; left: 14px; width: 18px; height: 48px; border-right: 2px solid rgba(255,255,255,.44); border-radius: 50%; content: ""; }
-    .art-label { position: absolute; z-index: 3; right: -11px; top: 42%; display: grid; gap: 2px; padding: 10px 11px; border-left: 2px solid var(--sand); background: rgba(6,39,66,.86); color: #fff; }
-    .art-label strong { font-family: "Playfair Display", serif; font-size: 22px; line-height: 1; }
-    .art-label span { color: var(--sky); font-size: 9px; letter-spacing: .09em; }
-    .art-label small { color: rgba(255,255,255,.72); font-size: 9px; }
 
-    .story { padding: 115px 0 120px; background: #fff; }
-    .story-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(45px, 9vw, 105px); align-items: center; }
-    .story-visual { position: relative; min-height: 400px; }
-    .story-seal {
-      display: grid;
-      width: 320px;
-      height: 320px;
-      place-content: center;
-      margin: 0 auto;
-      border: 1px solid var(--sky);
+    .nav-link:hover, .nav-link.active {
+      color: #ffffff;
+      text-shadow: 0 0 10px rgba(192, 132, 252, 0.8);
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gold-glow);
+      transition: width 0.3s ease;
+      box-shadow: var(--glow-gold);
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .cart-btn {
+      position: relative;
+      background: rgba(124, 58, 237, 0.18);
+      border: 1px solid rgba(168, 85, 247, 0.4);
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .cart-btn:hover {
+      background: rgba(168, 85, 247, 0.35);
+      border-color: var(--purple-glow);
+      transform: translateY(-2px);
+    }
+
+    .cart-badge {
+      background: linear-gradient(135deg, var(--gold-primary), var(--gold-glow));
+      color: var(--purple-darkest);
+      font-size: 0.75rem;
+      font-weight: 900;
+      padding: 2px 7px;
+      border-radius: var(--radius-full);
+      box-shadow: 0 0 8px rgba(245, 158, 11, 0.6);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: transparent;
+      color: #fff;
+      font-size: 1.6rem;
+      padding: 6px;
+    }
+
+    /* ==========================================================================
+       3. Hero 主視覺區 (Hero: 傳說10週年 × 衣索比亞咖啡豆 × 智慧咖啡機)
+       ========================================================================== */
+    .hero {
+      padding-top: 180px;
+      padding-bottom: 100px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg-lights {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-orbit {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 850px;
+      height: 850px;
       border-radius: 50%;
-      background: radial-gradient(circle, #fff 0 55%, #eaf5f7 56% 60%, #fff 61%);
-      color: var(--navy);
+      border: 1px dashed rgba(168, 85, 247, 0.2);
+      animation: rotateSlow 60s linear infinite;
+    }
+
+    @keyframes rotateSlow {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 50px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-tag-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.6rem, 4.8vw, 4.1rem);
+      font-weight: 900;
+      line-height: 1.2;
+      color: #ffffff;
+      margin-bottom: 24px;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+    }
+
+    .hero-title .glow-text {
+      color: var(--gold-glow);
+      text-shadow: 0 0 20px rgba(251, 191, 36, 0.6);
+    }
+
+    .hero-title .gradient-text {
+      background: linear-gradient(135deg, #c084fc, #9333ea, #f59e0b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      line-height: 1.85;
+      margin-bottom: 36px;
+      max-width: 580px;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 46px;
+    }
+
+    /* Hero 數據指標列 */
+    .hero-highlights {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(168, 85, 247, 0.2);
+    }
+
+    .highlight-card {
+      background: rgba(34, 18, 63, 0.5);
+      border: 1px solid rgba(168, 85, 247, 0.25);
+      border-radius: var(--radius-sm);
+      padding: 14px 18px;
+      backdrop-filter: blur(10px);
+    }
+
+    .highlight-card .hl-num {
+      font-family: var(--font-cyber);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--gold-glow);
+      line-height: 1.1;
+    }
+
+    .highlight-card .hl-label {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      margin-top: 4px;
+    }
+
+    /* Hero 右側互動卡片：自動咖啡機與限定杯視覺 */
+    .machine-visual-wrap {
+      position: relative;
+    }
+
+    .machine-visual-card {
+      background: linear-gradient(160deg, rgba(34, 18, 63, 0.85) 0%, rgba(18, 7, 36, 0.95) 100%);
+      border: 1.5px solid rgba(168, 85, 247, 0.4);
+      border-radius: var(--radius-lg);
+      padding: 36px 30px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), var(--glow-purple);
+      position: relative;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .machine-visual-card::before {
+      content: "";
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.3) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge-float {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+      letter-spacing: 0.06em;
+    }
+
+    .machine-hud {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(124, 58, 237, 0.25);
+      border: 1px solid rgba(168, 85, 247, 0.4);
+      padding: 6px 16px;
+      border-radius: var(--radius-full);
+      font-family: var(--font-cyber);
+      font-size: 0.85rem;
+      color: #c084fc;
+      margin-bottom: 24px;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--success);
+      box-shadow: 0 0 10px var(--success);
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.3); }
+    }
+
+    .hero-photo {
+      width: 400px;
+      height: 300px;
+      max-width: 100%;
+      object-fit: cover;
+      border-radius: var(--radius-md);
+      margin: 0 auto 20px;
+      display: block;
+      border: 1px solid rgba(168, 85, 247, 0.35);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(168, 85, 247, 0.25);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hero-photo:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 28px rgba(168, 85, 247, 0.45);
+    }
+
+    .coffee-cup-svg {
+      width: 220px;
+      height: 220px;
+      margin: 0 auto 20px;
+      filter: drop-shadow(0 15px 30px rgba(168, 85, 247, 0.35));
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .machine-status-box {
+      background: rgba(12, 5, 23, 0.65);
+      border: 1px solid rgba(168, 85, 247, 0.25);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
       text-align: center;
     }
-    .story-seal::before { display: block; margin-bottom: 14px; color: var(--blue); content: "B"; font-family: "Playfair Display", serif; font-size: 73px; line-height: 1; }
-    .story-seal strong { font-family: "Noto Serif TC", serif; font-size: 18px; letter-spacing: .09em; }
-    .story-seal span { margin-top: 10px; color: var(--blue); font-size: 9px; font-weight: 700; letter-spacing: .15em; }
-    .note-card { position: absolute; right: 0; bottom: 0; width: min(225px, 57%); padding: 25px; background: var(--navy); color: #fff; box-shadow: var(--shadow); }
-    .note-card p:first-child { margin: 0; color: var(--sky); font-size: 10px; font-weight: 700; letter-spacing: .16em; }
-    .note-card p:last-child { margin: 12px 0 0; font-family: "Noto Serif TC", serif; font-size: 16px; line-height: 1.65; }
-    .story-content p { margin: 19px 0 0; color: var(--muted); }
-    .story-content p + p { margin-top: 15px; }
-    .underlined-link { display: inline-flex; margin-top: 27px; padding-bottom: 5px; border-bottom: 1px solid var(--blue); color: var(--blue); font-size: 14px; font-weight: 600; transition: gap .2s ease; }
-    .underlined-link:hover { gap: 8px; }
 
-    .coffee { padding: 112px 0 120px; background: var(--mist); }
-    .coffee-heading { display: flex; align-items: end; justify-content: space-between; gap: 32px; margin-bottom: 43px; }
-    .coffee-heading .section-copy { max-width: 365px; }
-    .coffee-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 19px; }
-    .coffee-card {
+    .status-col span {
+      display: block;
+      font-size: 0.72rem;
+      color: var(--text-dim);
+    }
+
+    .status-col strong {
+      font-family: var(--font-cyber);
+      font-size: 1.15rem;
+      color: var(--gold-glow);
+    }
+
+    /* ==========================================================================
+       4. 品牌風格專題 (衣索比亞產區咖啡豆 × 傳說對決傳承)
+       ========================================================================== */
+    .terroir-section {
+      background: linear-gradient(180deg, var(--purple-darkest) 0%, var(--purple-base) 100%);
+      border-top: 1px solid rgba(168, 85, 247, 0.15);
+      border-bottom: 1px solid rgba(168, 85, 247, 0.15);
+    }
+
+    .terroir-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .terroir-card {
+      background: rgba(34, 18, 63, 0.6);
+      border: 1px solid rgba(168, 85, 247, 0.3);
+      border-radius: var(--radius-md);
+      padding: 36px 28px;
+      position: relative;
+      transition: var(--transition);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .terroir-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--purple-brand), var(--gold-primary));
+      opacity: 0.5;
+      transition: var(--transition);
+    }
+
+    .terroir-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--purple-glow);
+      box-shadow: var(--card-shadow), var(--glow-purple);
+      background: rgba(45, 22, 85, 0.75);
+    }
+
+    .terroir-card:hover::before {
+      opacity: 1;
+      height: 5px;
+    }
+
+    .terroir-icon-wrap {
+      width: 60px;
+      height: 60px;
+      border-radius: var(--radius-sm);
+      background: rgba(124, 58, 237, 0.25);
+      border: 1px solid rgba(168, 85, 247, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold-glow);
+      font-size: 1.8rem;
+      margin-bottom: 22px;
+    }
+
+    .terroir-hero-tag {
+      font-family: var(--font-cyber);
+      font-size: 0.8rem;
+      color: var(--purple-cyan);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      margin-bottom: 6px;
+    }
+
+    .terroir-name {
+      font-family: var(--font-serif);
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .terroir-flavor {
+      font-size: 0.92rem;
+      color: var(--gold-light);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 500;
+    }
+
+    .terroir-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .terroir-stats-row {
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px dashed rgba(168, 85, 247, 0.25);
+      padding-top: 14px;
+      font-size: 0.82rem;
+      color: var(--text-dim);
+    }
+
+    .terroir-stats-row strong {
+      color: var(--text-main);
+    }
+
+    /* ==========================================================================
+       5. 傳說限定豆單 (咖啡商品展示 - 吸引消費咖啡)
+       ========================================================================== */
+    .menu-section {
+      position: relative;
+    }
+
+    .beans-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .bean-card {
+      background: rgba(34, 18, 63, 0.7);
+      border: 1px solid rgba(168, 85, 247, 0.3);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition);
+      box-shadow: var(--card-shadow);
+      position: relative;
+    }
+
+    .bean-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--gold-glow);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), var(--glow-gold);
+    }
+
+    .bean-top-banner {
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.4), rgba(245, 158, 11, 0.25));
+      padding: 24px 20px;
+      text-align: center;
+      border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+      position: relative;
+    }
+
+    .bean-hero-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      background: rgba(12, 5, 23, 0.85);
+      border: 1px solid var(--gold-glow);
+      color: var(--gold-glow);
+    }
+
+    .bean-svg-icon {
+      width: 90px;
+      height: 90px;
+      margin: 10px auto 0;
+      filter: drop-shadow(0 10px 18px rgba(124, 58, 237, 0.4));
+      transition: transform 0.3s ease;
+    }
+
+    .bean-card:hover .bean-svg-icon {
+      transform: scale(1.1) rotate(-5deg);
+    }
+
+    .bean-content {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .bean-origin {
+      font-family: var(--font-cyber);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #c084fc;
+      letter-spacing: 0.12em;
+      margin-bottom: 4px;
+    }
+
+    .bean-name {
+      font-family: var(--font-serif);
+      font-size: 1.22rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.35;
+      margin-bottom: 10px;
+    }
+
+    .flavor-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .flavor-pill {
+      background: rgba(124, 58, 237, 0.2);
+      border: 1px solid rgba(168, 85, 247, 0.3);
+      color: #e9d5ff;
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    .virtual-bonus-box {
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px dashed rgba(245, 158, 11, 0.5);
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      font-size: 0.8rem;
+      color: var(--gold-light);
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .virtual-bonus-box svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      color: var(--gold-glow);
+    }
+
+    .bean-footer {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(168, 85, 247, 0.2);
+      padding-top: 14px;
+    }
+
+    .bean-price {
+      font-family: var(--font-cyber);
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--gold-glow);
+    }
+
+    .bean-price small {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      font-weight: 400;
+    }
+
+    .btn-buy-bean {
+      background: linear-gradient(135deg, var(--purple-brand), var(--purple-neon));
+      color: #fff;
+      border-radius: var(--radius-sm);
+      padding: 8px 14px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-buy-bean:hover {
+      background: linear-gradient(135deg, var(--gold-primary), var(--gold-glow));
+      color: var(--purple-darkest);
+      transform: translateY(-2px);
+    }
+
+    /* ==========================================================================
+       6. 用途專區：次世代智慧自動咖啡機 (Smart Coffee Machine Showcase)
+       ========================================================================== */
+    .machine-feature-section {
+      background: radial-gradient(circle at 50% 50%, rgba(34, 18, 63, 0.8), var(--purple-darkest) 90%);
+      border-top: 1px solid rgba(168, 85, 247, 0.2);
+      border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+    }
+
+    .machine-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.05fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .machine-spec-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .spec-item {
+      display: flex;
+      gap: 18px;
+      background: rgba(34, 18, 63, 0.5);
+      border: 1px solid rgba(168, 85, 247, 0.25);
+      padding: 20px;
+      border-radius: var(--radius-md);
+      transition: var(--transition);
+    }
+
+    .spec-item:hover {
+      background: rgba(50, 25, 90, 0.6);
+      border-color: var(--purple-glow);
+      transform: translateX(6px);
+    }
+
+    .spec-num {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--purple-brand), var(--gold-primary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-cyber);
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #fff;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4);
+    }
+
+    .spec-text h4 {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .spec-text p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    /* 互動沖煮模擬器 (Machine Brewing Simulator) */
+    .simulator-card {
+      background: linear-gradient(160deg, #1f0d38 0%, #120622 100%);
+      border: 2px solid rgba(168, 85, 247, 0.45);
+      border-radius: var(--radius-lg);
+      padding: 36px 30px;
+      box-shadow: var(--card-shadow), var(--glow-purple);
+      position: relative;
+    }
+
+    .sim-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(168, 85, 247, 0.25);
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+    }
+
+    .sim-header h3 {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .sim-options {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .sim-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+    }
+
+    .sim-buttons {
+      display: flex;
+      gap: 8px;
+    }
+
+    .sim-btn-opt {
+      padding: 6px 14px;
+      border-radius: var(--radius-sm);
+      background: rgba(124, 58, 237, 0.2);
+      border: 1px solid rgba(168, 85, 247, 0.35);
+      color: #e9d5ff;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    .sim-btn-opt.active, .sim-btn-opt:hover {
+      background: var(--purple-brand);
+      color: #fff;
+      border-color: var(--purple-glow);
+    }
+
+    .sim-screen {
+      background: rgba(12, 5, 23, 0.95);
+      border: 1px solid rgba(168, 85, 247, 0.3);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      text-align: center;
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sim-screen-title {
+      font-family: var(--font-cyber);
+      font-size: 0.85rem;
+      color: #a855f7;
+      letter-spacing: 0.15em;
+      margin-bottom: 12px;
+    }
+
+    .sim-progress-bar-bg {
+      width: 100%;
+      height: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      margin-bottom: 14px;
+    }
+
+    .sim-progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--purple-brand), var(--gold-glow));
+      transition: width 0.1s linear;
+      box-shadow: 0 0 10px var(--gold-glow);
+    }
+
+    .sim-telemetry {
+      display: flex;
+      justify-content: space-around;
+      font-family: var(--font-cyber);
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .sim-telemetry strong {
+      color: var(--gold-glow);
+      font-size: 1.15rem;
+    }
+
+    /* ==========================================================================
+       7. 傳說限定周邊專區 (吸引客戶消費周邊)
+       ========================================================================== */
+    .merch-section {
+      position: relative;
+    }
+
+    .merch-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 26px;
+    }
+
+    .merch-card {
+      background: rgba(34, 18, 63, 0.75);
+      border: 1.5px solid rgba(168, 85, 247, 0.28);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition);
+      box-shadow: var(--card-shadow);
+      position: relative;
+    }
+
+    .merch-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--purple-glow);
+      box-shadow: var(--card-shadow), var(--glow-purple);
+    }
+
+    .merch-thumb {
+      background: radial-gradient(circle at center, #2e1454, #150929);
+      padding: 36px 20px 24px;
+      text-align: center;
+      position: relative;
+      border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+    }
+
+    .merch-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: linear-gradient(135deg, #ef4444, #dc2626);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+    }
+
+    .merch-svg {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto;
+      filter: drop-shadow(0 10px 20px rgba(168, 85, 247, 0.35));
+      transition: transform 0.3s ease;
+    }
+
+    .merch-card:hover .merch-svg {
+      transform: scale(1.12);
+    }
+
+    .merch-body {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .merch-type {
+      font-family: var(--font-cyber);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--gold-glow);
+      letter-spacing: 0.1em;
+      margin-bottom: 4px;
+    }
+
+    .merch-title {
+      font-family: var(--font-serif);
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+
+    .merch-features {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+
+    .merch-footer {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(168, 85, 247, 0.2);
+      padding-top: 14px;
+    }
+
+    .merch-price {
+      font-family: var(--font-cyber);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--gold-glow);
+    }
+
+    .merch-price del {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      font-weight: 400;
+      margin-left: 6px;
+    }
+
+    .btn-buy-merch {
+      background: linear-gradient(135deg, var(--gold-primary), var(--gold-glow));
+      color: var(--purple-darkest);
+      border-radius: var(--radius-sm);
+      padding: 8px 16px;
+      font-size: 0.85rem;
+      font-weight: 800;
+    }
+
+    .btn-buy-merch:hover {
+      box-shadow: var(--glow-gold);
+      transform: translateY(-2px);
+    }
+
+    /* ==========================================================================
+       8. 10週年滿額轉蛋 / 抽獎輪盤 (Gacha Lottery System)
+       ========================================================================== */
+    .gacha-section {
+      background: linear-gradient(180deg, var(--purple-base) 0%, var(--purple-darkest) 100%);
+      border-top: 1px solid rgba(168, 85, 247, 0.2);
+      border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+    }
+
+    .gacha-box {
+      background: radial-gradient(circle at center, rgba(76, 29, 149, 0.4), rgba(23, 11, 44, 0.9));
+      border: 2px solid var(--purple-border);
+      border-radius: var(--radius-lg);
+      padding: 48px 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      box-shadow: var(--card-shadow), var(--glow-purple);
+    }
+
+    .gacha-info h3 {
+      font-family: var(--font-serif);
+      font-size: 2.1rem;
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+
+    .gacha-info p {
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+
+    .gacha-rewards-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+
+    .gacha-reward-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.92rem;
+      color: #e9d5ff;
+    }
+
+    .reward-pill {
+      font-family: var(--font-cyber);
+      font-weight: 800;
+      font-size: 0.78rem;
+      padding: 2px 10px;
+      border-radius: 4px;
+    }
+    .pill-ssr { background: linear-gradient(135deg, #ef4444, #f59e0b); color: #fff; }
+    .pill-sr  { background: linear-gradient(135deg, #9333ea, #3b82f6); color: #fff; }
+    .pill-r   { background: rgba(168, 85, 247, 0.3); color: #e9d5ff; }
+
+    /* 轉盤外觀 */
+    .wheel-container {
       position: relative;
       display: flex;
-      min-height: 384px;
-      overflow: hidden;
       flex-direction: column;
-      padding: 31px 29px 25px;
-      background: var(--navy);
-      color: #fff;
-      box-shadow: var(--shadow);
+      align-items: center;
     }
-    .coffee-card:nth-child(2) { background: #106396; }
-    .coffee-card:nth-child(3) { background: #164c68; }
-    .coffee-card::after { position: absolute; right: -73px; bottom: -90px; width: 230px; height: 230px; border: 25px solid rgba(117,198,232,.15); border-radius: 50%; content: ""; }
-    .coffee-card > * { position: relative; z-index: 1; }
-    .bean-no { margin: 0; color: var(--sky); font-family: "Playfair Display", serif; font-size: 14px; font-weight: 600; letter-spacing: .11em; }
-    .origin { margin: 19px 0 5px; color: rgba(255,255,255,.67); font-size: 10px; font-weight: 700; letter-spacing: .13em; }
-    .bean-name { margin: 0; font-family: "Noto Serif TC", serif; font-size: 24px; font-weight: 700; letter-spacing: .04em; line-height: 1.35; }
-    .flavour { margin: 14px 0 0; color: rgba(255,255,255,.79); font-size: 14px; }
-    .coffee-bottom { display: flex; align-items: center; justify-content: space-between; gap: 13px; margin-top: auto; padding-top: 23px; border-top: 1px solid rgba(255,255,255,.22); }
-    .price { font-family: "Playfair Display", serif; font-size: 14px; white-space: nowrap; }
-    .save-button { padding: 5px 0; border: 0; background: transparent; color: #fff; font-size: 13px; font-weight: 600; white-space: nowrap; transition: color .2s ease; }
-    .save-button:hover { color: var(--sand); }
 
-    .brew { padding: 115px 0 120px; background: #fff; }
-    .brew-grid { display: grid; grid-template-columns: .93fr 1.07fr; gap: clamp(44px, 7vw, 90px); align-items: center; }
-    .brew-art { position: relative; min-height: 448px; overflow: hidden; background: linear-gradient(138deg, #eef9fa 0 50%, #d6edf3 50% 100%); }
-    .brew-art::before { position: absolute; top: 33px; left: 30px; width: 70px; height: 35px; border-top: 1px solid var(--sky); border-left: 1px solid var(--sky); content: ""; }
-    .brew-art::after { position: absolute; top: 49px; left: 46px; width: 70px; height: 35px; border-top: 1px solid var(--sky); border-left: 1px solid var(--sky); content: ""; }
-    .pour-rings { position: absolute; top: 50%; left: 50%; width: 238px; height: 238px; border: 1px solid rgba(12,91,149,.35); border-radius: 50%; transform: translate(-50%,-46%); }
-    .pour-rings::before, .pour-rings::after { position: absolute; border: 1px solid rgba(12,91,149,.28); border-radius: 50%; content: ""; }
-    .pour-rings::before { inset: 27px; }
-    .pour-rings::after { inset: 57px; }
-    .pour-line { position: absolute; top: 39px; left: 50%; width: 1px; height: 140px; background: var(--blue); transform: rotate(24deg); transform-origin: bottom; }
-    .v60 { position: absolute; top: 50%; left: 50%; width: 140px; height: 105px; border: 3px solid var(--navy); border-top-width: 4px; background: rgba(255,255,255,.7); clip-path: polygon(0 0, 100% 0, 74% 100%, 26% 100%); transform: translate(-50%,-33%); }
-    .v60::after { position: absolute; bottom: -61px; left: 35px; width: 64px; height: 58px; border: 3px solid var(--navy); border-radius: 8px 8px 19px 19px; background: linear-gradient(to top, #6c3924 0 31%, rgba(255,255,255,.5) 32%); content: ""; }
-    .brew-caption { position: absolute; right: 27px; bottom: 25px; display: grid; color: var(--navy); text-align: right; }
-    .brew-caption strong { font-family: "Playfair Display", serif; font-size: 21px; letter-spacing: .05em; }
-    .brew-caption span { font-size: 10px; font-weight: 700; letter-spacing: .12em; }
-    .brew-content .section-copy { max-width: 530px; }
-    .brew-steps { margin-top: 28px; border-top: 1px solid var(--line); }
-    .brew-step { display: grid; grid-template-columns: 55px 1fr; gap: 14px; padding: 19px 0; border-bottom: 1px solid var(--line); }
-    .step-no { color: var(--blue); font-family: "Playfair Display", serif; font-size: 25px; font-weight: 600; line-height: 1; }
-    .brew-step h3 { margin: 0; font-family: "Noto Serif TC", serif; font-size: 17px; letter-spacing: .03em; }
-    .brew-step p { margin: 5px 0 0; color: var(--muted); font-size: 14px; }
+    .wheel-wrap {
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      border: 8px solid #3b1666;
+      box-shadow: 0 0 35px rgba(168, 85, 247, 0.6), inset 0 0 25px rgba(0, 0, 0, 0.8);
+      position: relative;
+      overflow: hidden;
+      transition: transform 4s cubic-bezier(0.15, 0.95, 0.35, 1);
+    }
 
-    .visit { position: relative; overflow: hidden; padding: 116px 0; background: var(--navy); color: #fff; text-align: center; }
-    .visit::before, .visit::after { position: absolute; width: 380px; height: 380px; border: 1px solid rgba(117,198,232,.19); border-radius: 50%; content: ""; }
-    .visit::before { top: -250px; left: -145px; }
-    .visit::after { right: -165px; bottom: -260px; width: 450px; height: 450px; border-width: 22px; opacity: .45; }
-    .visit .wrap { position: relative; z-index: 1; max-width: 730px; }
-    .visit .eyebrow { justify-content: center; color: var(--sky); }
-    .visit .section-title { max-width: 670px; margin-inline: auto; }
-    .visit .section-copy { max-width: 535px; margin-inline: auto; color: rgba(255,255,255,.72); }
-    .subscribe-form { display: flex; margin: 34px auto 0; padding: 5px; border: 1px solid rgba(255,255,255,.58); }
-    .subscribe-form input { min-width: 0; flex: 1; padding: 11px 15px; border: 0; outline: 0; background: transparent; color: #fff; }
-    .subscribe-form input::placeholder { color: rgba(255,255,255,.58); }
-    .subscribe-form button { min-height: 48px; padding: 10px 20px; border: 0; border-radius: 1px; background: var(--sand); color: var(--navy); font-size: 14px; font-weight: 700; transition: background .2s ease; }
-    .subscribe-form button:hover { background: #f1ca83; }
+    .wheel-pointer {
+      position: absolute;
+      top: -16px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 18px solid transparent;
+      border-right: 18px solid transparent;
+      border-top: 32px solid var(--gold-glow);
+      z-index: 10;
+      filter: drop-shadow(0 4px 10px rgba(0,0,0,0.6));
+    }
 
-    .site-footer { padding: 65px 0 25px; background: #031c31; color: rgba(255,255,255,.68); }
-    .footer-grid { display: grid; grid-template-columns: 1.45fr .75fr .9fr; gap: 54px; padding-bottom: 46px; }
-    .footer-brand .brand { margin-bottom: 18px; }
-    .footer-brand p { max-width: 355px; margin: 0; font-size: 14px; }
-    .footer-heading { margin: 3px 0 17px; color: var(--sky); font-size: 11px; font-weight: 700; letter-spacing: .15em; }
-    .footer-links, .footer-contact { display: grid; gap: 10px; font-size: 14px; }
-    .footer-links a:hover, .footer-contact a:hover { color: #fff; }
-    .footer-bottom { display: flex; justify-content: space-between; gap: 18px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,.17); color: rgba(255,255,255,.47); font-size: 10px; letter-spacing: .1em; }
+    .wheel-center-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-primary), var(--gold-glow));
+      color: var(--purple-darkest);
+      font-family: var(--font-cyber);
+      font-weight: 900;
+      font-size: 1.05rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 20px rgba(245, 158, 11, 0.8);
+      z-index: 5;
+      cursor: pointer;
+    }
 
-    .toast {
-      position: fixed;
-      z-index: 20;
-      right: 22px;
-      bottom: 22px;
-      max-width: min(360px, calc(100% - 44px));
-      padding: 13px 18px;
-      border-left: 3px solid var(--sand);
-      background: var(--navy);
-      box-shadow: var(--shadow);
+    .wheel-center-btn:hover {
+      transform: translate(-50%, -50%) scale(1.08);
+    }
+
+    /* ==========================================================================
+       9. 自動咖啡機全台據點 (Station Locator)
+       ========================================================================== */
+    .stations-section {
+      position: relative;
+    }
+
+    .stations-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .station-card {
+      background: rgba(34, 18, 63, 0.6);
+      border: 1px solid rgba(168, 85, 247, 0.25);
+      border-radius: var(--radius-md);
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: var(--transition);
+    }
+
+    .station-card:hover {
+      border-color: var(--purple-glow);
+      background: rgba(45, 22, 85, 0.7);
+      transform: translateY(-4px);
+    }
+
+    .station-status-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .station-badge-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      color: var(--success);
+      font-weight: 700;
+    }
+
+    .station-name {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
       color: #fff;
-      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .station-address {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .station-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .station-tag {
+      background: rgba(124, 58, 237, 0.2);
+      color: #e9d5ff;
+      font-size: 0.72rem;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    /* ==========================================================================
+       10. 側邊購物車抽屜 (Slide-in Cart Drawer)
+       ========================================================================== */
+    .cart-drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(6px);
+      z-index: 2000;
       opacity: 0;
       pointer-events: none;
-      transform: translateY(12px);
-      transition: opacity .22s ease, transform .22s ease;
+      transition: opacity 0.3s ease;
     }
-    .toast.show { opacity: 1; transform: translateY(0); }
-    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    @media (max-width: 820px) {
-      .navbar { position: relative; }
-      .menu-toggle { display: block; }
+    .cart-drawer-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: -460px;
+      width: min(440px, 100%);
+      height: 100%;
+      background: #140924;
+      border-left: 2px solid var(--purple-border);
+      z-index: 2001;
+      display: flex;
+      flex-direction: column;
+      box-shadow: -15px 0 45px rgba(0, 0, 0, 0.8);
+      transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .cart-drawer.active {
+      right: 0;
+    }
+
+    .cart-drawer-header {
+      padding: 24px;
+      border-bottom: 1px solid rgba(168, 85, 247, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .cart-drawer-header h3 {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .close-cart-btn {
+      background: transparent;
+      color: var(--text-dim);
+      font-size: 1.5rem;
+      padding: 4px;
+    }
+    .close-cart-btn:hover { color: #fff; }
+
+    .cart-items-wrap {
+      flex-grow: 1;
+      overflow-y: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .cart-empty-message {
+      text-align: center;
+      color: var(--text-dim);
+      margin-top: 80px;
+      font-size: 0.95rem;
+    }
+
+    .cart-item {
+      background: rgba(34, 18, 63, 0.7);
+      border: 1px solid rgba(168, 85, 247, 0.3);
+      border-radius: var(--radius-sm);
+      padding: 14px;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .cart-item-info {
+      flex-grow: 1;
+    }
+
+    .cart-item-title {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .cart-item-bonus {
+      font-size: 0.75rem;
+      color: var(--gold-glow);
+    }
+
+    .cart-item-price {
+      font-family: var(--font-cyber);
+      font-size: 1rem;
+      font-weight: 700;
+      color: #e9d5ff;
+    }
+
+    .cart-qty-ctrl {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .qty-btn {
+      width: 26px;
+      height: 26px;
+      border-radius: 4px;
+      background: rgba(124, 58, 237, 0.3);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+    .qty-btn:hover { background: var(--purple-brand); }
+
+    .cart-drawer-footer {
+      padding: 24px;
+      border-top: 1px solid rgba(168, 85, 247, 0.25);
+      background: #0f061b;
+    }
+
+    .cart-total-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .cart-total-price {
+      font-family: var(--font-cyber);
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--gold-glow);
+    }
+
+    .cart-bonus-summary {
+      font-size: 0.82rem;
+      color: #c084fc;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* 獲獎彈跳視窗 (Prize Modal) */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(10px);
+      z-index: 3000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: linear-gradient(160deg, #240d42 0%, #100420 100%);
+      border: 2px solid var(--gold-glow);
+      border-radius: var(--radius-lg);
+      width: min(520px, 100%);
+      padding: 40px 32px;
+      text-align: center;
+      box-shadow: 0 0 50px rgba(245, 158, 11, 0.4);
+      position: relative;
+      animation: modalPop 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    }
+
+    @keyframes modalPop {
+      from { transform: scale(0.85); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .modal-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 20px;
+      color: var(--gold-glow);
+      filter: drop-shadow(0 0 15px rgba(245, 158, 11, 0.8));
+    }
+
+    .modal-title {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .modal-desc {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .voucher-code-box {
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px dashed var(--gold-glow);
+      padding: 12px 20px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-cyber);
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--gold-glow);
+      letter-spacing: 0.15em;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    /* ==========================================================================
+       11. 頁尾 (Footer)
+       ========================================================================== */
+    .site-footer {
+      background: #090312;
+      border-top: 1px solid rgba(168, 85, 247, 0.2);
+      padding: 70px 0 35px;
+      color: var(--text-dim);
+      font-size: 0.9rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+
+    .footer-brand p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-top: 14px;
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      color: #fff;
+      margin-bottom: 18px;
+      letter-spacing: 0.05em;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold-glow);
+      padding-left: 4px;
+    }
+
+    .footer-spec-box {
+      background: rgba(34, 18, 63, 0.5);
+      border: 1px solid rgba(168, 85, 247, 0.25);
+      border-radius: var(--radius-sm);
+      padding: 14px;
+      font-size: 0.8rem;
+      line-height: 1.7;
+    }
+
+    .footer-spec-box strong {
+      color: var(--gold-glow);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.82rem;
+    }
+
+    /* ==========================================================================
+       12. 響應式斷點設計 (Responsive Media Queries)
+       ========================================================================== */
+    @media (max-width: 1024px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+      .machine-visual-card {
+        max-width: 520px;
+        margin: 0 auto;
+      }
+      .terroir-grid, .beans-grid, .merch-grid, .stations-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .machine-grid, .gacha-box {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .section {
+        padding: 70px 0;
+      }
+      .navbar {
+        height: 68px;
+      }
       .nav-links {
+        display: none;
         position: absolute;
         top: 100%;
-        right: -24px;
-        left: -24px;
-        display: grid;
-        max-height: 0;
-        overflow: hidden;
-        gap: 0;
-        background: #05233c;
-        transition: max-height .32s ease;
+        left: 0;
+        width: 100%;
+        background: rgba(15, 6, 27, 0.98);
+        border-bottom: 1px solid var(--purple-border);
+        flex-direction: column;
+        padding: 24px;
+        gap: 18px;
       }
-      .nav-links.open { max-height: 300px; }
-      .nav-links a { padding: 12px 24px; border-top: 1px solid rgba(255,255,255,.1); }
-      .nav-links .nav-cta { margin: 8px 24px 16px; padding: 9px 12px; text-align: center; }
-      .hero { min-height: 710px; }
-      .hero-grid { grid-template-columns: 1fr; gap: 17px; padding-top: 112px; }
-      .hero-content { max-width: 640px; }
-      .scroll-note { margin-top: 29px; }
-      .hero-art { width: min(100%, 330px); height: 248px; min-height: 0; max-height: none; margin: 0; }
-      .hero-photo { width: 330px; height: 248px; }
-      .coffee-grid { grid-template-columns: repeat(2, 1fr); }
-      .coffee-card:nth-child(3) { grid-column: span 2; }
-      .story-grid, .brew-grid { grid-template-columns: 1fr; }
-      .story-visual { max-width: 520px; width: 100%; margin: auto; }
-      .brew-art { max-width: 540px; width: 100%; margin: auto; }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
-      .footer-brand { grid-column: 1 / -1; }
-    }
-
-    @media (max-width: 560px) {
-      .wrap { width: calc(100% - 34px); }
-      .navbar { min-height: 70px; }
-      .brand-copy strong { font-size: 13px; }
-      .hero { min-height: 680px; }
-      .hero-grid { padding-top: 98px; padding-bottom: 34px; }
-      .hero-title { font-size: 40px; }
-      .hero-lede { margin-top: 16px; font-size: 14px; line-height: 1.7; }
-      .hero-actions { margin-top: 23px; }
-      .hero-actions .button { flex: 1; padding-inline: 13px; }
-      .hero-meta { margin-top: 18px; }
-      .hero-art { width: 260px; height: 195px; min-height: 0; max-height: none; }
-      .hero-photo { width: 260px; height: 195px; }
-      .art-label { display: none; }
-      .sun { width: 49px; height: 49px; }
-      .coffee-vessel { bottom: 9%; left: 25%; transform: scale(.72); transform-origin: bottom left; }
-      .chair { transform: scale(.72); transform-origin: bottom right; }
-      .story, .coffee, .brew, .visit { padding: 76px 0; }
-      .story-seal { width: 245px; height: 245px; }
-      .story-seal::before { margin-bottom: 8px; font-size: 54px; }
-      .story-seal strong { font-size: 15px; }
-      .story-visual { min-height: 315px; }
-      .note-card { width: 185px; padding: 18px; }
-      .note-card p:last-child { font-size: 14px; }
-      .coffee-heading { display: block; margin-bottom: 30px; }
-      .coffee-heading .section-copy { margin-top: 14px; }
-      .coffee-grid { grid-template-columns: 1fr; }
-      .coffee-card, .coffee-card:nth-child(3) { min-height: 330px; grid-column: auto; }
-      .brew-art { min-height: 310px; }
-      .pour-rings { width: 185px; height: 185px; }
-      .v60 { transform: translate(-50%,-28%) scale(.82); }
-      .subscribe-form { display: grid; gap: 6px; padding: 5px; }
-      .subscribe-form input, .subscribe-form button { width: 100%; }
-      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
-      .footer-brand { grid-column: auto; }
-      .footer-bottom { display: grid; gap: 9px; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
-      .reveal { opacity: 1; transform: none; }
+      .nav-links.active {
+        display: flex;
+      }
+      .mobile-menu-btn {
+        display: block;
+      }
+      .terroir-grid, .beans-grid, .merch-grid, .stations-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-highlights {
+        grid-template-columns: 1fr;
+      }
+      .gacha-box {
+        padding: 30px 20px;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+      }
     }
   </style>
 </head>
 <body>
-  <header class="site-header" id="top">
-    <nav class="wrap navbar" aria-label="主要導覽">
-      <a class="brand" href="#top" aria-label="回到藍天咖啡首頁">
-        <span class="brand-mark" aria-hidden="true">B</span>
-        <span class="brand-copy"><strong>藍天咖啡</strong><small>BLUE SKY COFFEE</small></span>
-      </a>
-      <button class="menu-toggle" type="button" aria-controls="navLinks" aria-expanded="false" aria-label="開啟導覽選單">☰</button>
-      <div class="nav-links" id="navLinks">
-        <a href="#story">我們的故事</a>
-        <a href="#coffee">本季選豆</a>
-        <a href="#brew">沖煮日常</a>
-        <a class="nav-cta" href="#visit">訂閱風味通信</a>
-      </div>
-    </nav>
+
+  <!-- ==========================================================================
+       1. 頁首與導覽區 (Site Header & Announcement)
+       ========================================================================== -->
+  <header class="site-header">
+    <div class="announcement-bar">
+      ⚔️ 【傳說對決 10 週年慶】全台智慧咖啡機聯名限定！消費滿 NT$100 即贈「10週年英雄造型抽獎序號」＋ 限量英雄杯塞！
+    </div>
+    <div class="container">
+      <nav class="navbar" aria-label="主要導覽">
+        <!-- 品牌標誌 -->
+        <a href="#hero" class="brand-logo">
+          <div class="logo-badge">
+            <div class="logo-inner">
+              <!-- 咖啡與刀劍圖標 -->
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+                <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                <line x1="6" y1="1" x2="6" y2="4"/>
+                <line x1="10" y1="1" x2="10" y2="4"/>
+                <line x1="14" y1="1" x2="14" y2="4"/>
+              </svg>
+            </div>
+          </div>
+          <div class="brand-title-wrap">
+            <h1>傳說對決 <span>10TH</span></h1>
+            <div class="brand-sub">ETHIOPIA COFFEE STATION</div>
+          </div>
+        </a>
+
+        <!-- 導覽連結 -->
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#terroir" class="nav-link">衣索比亞風味</a></li>
+          <li><a href="#menu" class="nav-link">限定現萃豆單</a></li>
+          <li><a href="#machine" class="nav-link">智慧咖啡機</a></li>
+          <li><a href="#merch" class="nav-link">10週年限定周邊</a></li>
+          <li><a href="#gacha" class="nav-link">滿額抽虛寶</a></li>
+          <li><a href="#stations" class="nav-link">機台據點</a></li>
+        </ul>
+
+        <!-- 右側按鈕群 -->
+        <div class="nav-actions">
+          <button class="cart-btn" id="openCartBtn" aria-label="開啟購物車">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9" cy="21" r="1"/>
+              <circle cx="20" cy="21" r="1"/>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+            </svg>
+            <span>選單</span>
+            <span class="cart-badge" id="cartCount">0</span>
+          </button>
+          
+          <button class="mobile-menu-btn" id="mobileToggle" aria-label="切換導覽選單">
+            ☰
+          </button>
+        </div>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <section class="hero" aria-labelledby="heroTitle">
-      <div class="wrap hero-grid">
-        <div class="hero-content">
-          <p class="eyebrow">HAND BREWED · SLOWLY ROASTED</p>
-          <h1 class="hero-title" id="heroTitle">讓風味，在<span class="sky-word">藍天</span>下慢慢抵達。</h1>
-          <p class="hero-lede">藍天咖啡為喜歡手沖的您，挑選值得細品的單一產區咖啡豆。從第一縷花香，到最後一口回甘，每一杯都有屬於自己的晴朗天氣。</p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#coffee">探索本季咖啡豆 →</a>
-            <a class="button button-outline" href="#story">認識藍天</a>
+    <!-- ==========================================================================
+         2. Hero 首頁主視覺區
+         ========================================================================== -->
+    <section class="hero" id="hero">
+      <div class="hero-bg-lights">
+        <div class="hero-orbit"></div>
+      </div>
+
+      <div class="container">
+        <div class="hero-grid">
+          <!-- 左側文字文案 -->
+          <div class="hero-content">
+            <div class="hero-tag-group">
+              <span class="tag-badge tag-purple">⚔️ 傳說對決 10 週年傳奇聯名</span>
+              <span class="tag-badge tag-gold">☕ 100% 衣索比亞高地單品豆</span>
+            </div>
+
+            <h2 class="hero-title">
+              傳說十年 · 啡躍巔峰<br>
+              <span class="glow-text">智慧自動咖啡機</span><br>
+              <span class="gradient-text">現磨現萃 · 能量爆發</span>
+            </h2>
+
+            <p class="hero-subtitle">
+              專為傳說對決召喚師與精品咖啡愛好者精心締造！嚴選衣索比亞古優原生種精品豆，搭載次世代無人自動咖啡機，45 秒極速仿手沖出杯。每一口都是排位連勝的神聖能量，杯杯即開即領 10 週年限定英雄造型虛寶！
+            </p>
+
+            <div class="hero-cta-group">
+              <a href="#menu" class="btn btn-gold">
+                <span>瀏覽限定現萃豆單</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+              <a href="#machine" class="btn btn-outline-purple">
+                <span>探索智慧咖啡機體驗</span>
+              </a>
+            </div>
+
+            <!-- 數據指標 -->
+            <div class="hero-highlights">
+              <div class="highlight-card">
+                <div class="hl-num">45s</div>
+                <div class="hl-label">極速現磨無人出杯</div>
+              </div>
+              <div class="highlight-card">
+                <div class="hl-num">SCA 89+</div>
+                <div class="hl-label">衣索比亞莊園評分</div>
+              </div>
+              <div class="highlight-card">
+                <div class="hl-num">100%</div>
+                <div class="hl-label">隨杯贈 10週年虛寶卡</div>
+              </div>
+            </div>
           </div>
-          <p class="hero-meta">TAIPEI · TAIWAN · EST. 2025</p>
-          <p class="scroll-note">SCROLL TO DISCOVER</p>
-        </div>
 
-        <div class="hero-art" aria-hidden="true">
-          <img class="hero-photo" src="images/hero.jpg" width="400" height="300" alt="">
-          <span class="art-label"><strong>92°C</strong><span>理想水溫</span><small>細細喚醒香氣</small></span>
-        </div>
-      </div>
-    </section>
+          <!-- 右側視覺：智慧自動咖啡機展示卡 -->
+          <div class="machine-visual-wrap">
+            <div class="machine-visual-card">
+              <div class="hero-badge-float">10TH LIMITED</div>
+              
+              <div class="machine-hud">
+                <span class="pulse-dot"></span>
+                <span>AOV-SMART COFFEE ENGINE ONLINE</span>
+              </div>
 
-    <section class="story" id="story" aria-labelledby="storyTitle">
-      <div class="wrap story-grid">
-        <div class="story-visual reveal" aria-hidden="true">
-          <div class="story-seal"><strong>慢一點，<br>更清楚。</strong><span>LET THE FLAVOUR SPEAK</span></div>
-          <div class="note-card"><p>BLUE SKY NOTE</p><p>一杯好咖啡，從來不是匆忙完成的事。</p></div>
-        </div>
-        <div class="story-content reveal">
-          <p class="eyebrow">OUR PHILOSOPHY</p>
-          <h2 class="section-title" id="storyTitle">在一杯之間，看見產地的<span class="accent">晴朗</span>。</h2>
-          <p>我們相信，精品咖啡的美好不該被複雜掩蓋。以小批次烘焙留住豆子的個性，再用穩定、誠實的手沖，讓風土與時間在杯中變得清晰。</p>
-          <p>給懂得放慢腳步的人，也給每一個想重新認識咖啡的人。</p>
-          <a class="underlined-link" href="#brew">看看我們如何沖煮 →</a>
-        </div>
-      </div>
-    </section>
+              <!-- 右欄圖片：不使用 CSS 插畫，使用既有圖片 -->
+              <img class="hero-photo" src="images/hero.jpg" alt="傳說對決 10 週年咖啡限定 智慧自動咖啡機" width="400" height="300">
 
-    <section class="coffee" id="coffee" aria-labelledby="coffeeTitle">
-      <div class="wrap">
-        <div class="coffee-heading reveal">
-          <div>
-            <p class="eyebrow">SEASONAL SELECTION</p>
-            <h2 class="section-title" id="coffeeTitle">今天，想喝哪一片<span class="accent">藍天</span>？</h2>
-          </div>
-          <p class="section-copy">三款當季單品，為不同的晨光、午後與靜夜而選。</p>
-        </div>
-        <div class="coffee-grid">
-          <article class="coffee-card reveal">
-            <p class="bean-no">01 / BRIGHT</p>
-            <p class="origin">ETHIOPIA · YIRGACHEFFE</p>
-            <h3 class="bean-name">衣索比亞・耶加雪菲</h3>
-            <p class="flavour">白花、佛手柑、蜂蜜</p>
-            <div class="coffee-bottom"><span class="price">NT$ 520 / 200g</span><button class="save-button" type="button" data-coffee="衣索比亞・耶加雪菲">加入收藏 ＋</button></div>
-          </article>
-          <article class="coffee-card reveal">
-            <p class="bean-no">02 / JUICY</p>
-            <p class="origin">KENYA · KIRINYAGA</p>
-            <h3 class="bean-name">肯亞・祈安布</h3>
-            <p class="flavour">黑醋栗、洛神、葡萄柚</p>
-            <div class="coffee-bottom"><span class="price">NT$ 580 / 200g</span><button class="save-button" type="button" data-coffee="肯亞・祈安布">加入收藏 ＋</button></div>
-          </article>
-          <article class="coffee-card reveal">
-            <p class="bean-no">03 / ROUND</p>
-            <p class="origin">COLOMBIA · HUILA</p>
-            <h3 class="bean-name">哥倫比亞・慧蘭</h3>
-            <p class="flavour">黃桃、焦糖、可可尾韻</p>
-            <div class="coffee-bottom"><span class="price">NT$ 460 / 200g</span><button class="save-button" type="button" data-coffee="哥倫比亞・慧蘭">加入收藏 ＋</button></div>
-          </article>
-        </div>
-      </div>
-    </section>
+              <h3 style="font-family: var(--font-serif); font-size: 1.25rem; margin-bottom: 6px; color:#fff;">傳說聯名限定·紫焰萃取艙</h3>
+              <p style="font-size: 0.85rem; color: #cbd5e1; margin-bottom: 20px;">瑞士超精密刀盤現磨 · 92°C 仿手沖變頻注水</p>
 
-    <section class="brew" id="brew" aria-labelledby="brewTitle">
-      <div class="wrap brew-grid">
-        <div class="brew-art reveal" aria-hidden="true">
-          <span class="pour-rings"></span><span class="pour-line"></span><span class="v60"></span>
-          <span class="brew-caption"><strong>2'45''</strong><span>V60 / 15G : 240ML</span></span>
-        </div>
-        <div class="brew-content reveal">
-          <p class="eyebrow">A QUIET RITUAL</p>
-          <h2 class="section-title" id="brewTitle">把時間交給水，讓咖啡說<span class="accent">自己的話</span>。</h2>
-          <p class="section-copy">不需要繁複儀式，只要三個安靜的步驟。每一個參數，都是為了讓你更靠近豆子原本的樣子。</p>
-          <div class="brew-steps">
-            <div class="brew-step"><span class="step-no">01</span><div><h3>研磨，先聞見期待</h3><p>15g 中細研磨，讓香氣從指尖開始展開。</p></div></div>
-            <div class="brew-step"><span class="step-no">02</span><div><h3>悶蒸，等待第一個呼吸</h3><p>以 92°C 熱水浸潤 30 秒，喚醒甜感與層次。</p></div></div>
-            <div class="brew-step"><span class="step-no">03</span><div><h3>注水，保持自己的節奏</h3><p>穩定畫圈，讓 240ml 的清澈在 2 分 45 秒完成。</p></div></div>
+              <!-- 狀態數據面板 -->
+              <div class="machine-status-box">
+                <div class="status-col">
+                  <span>萃取水溫</span>
+                  <strong>92.5°C</strong>
+                </div>
+                <div class="status-col">
+                  <span>粉水比</span>
+                  <strong>1 : 15.5</strong>
+                </div>
+                <div class="status-col">
+                  <span>當前產區豆</span>
+                  <strong style="color: #c084fc;">衣索比亞</strong>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="visit" id="visit" aria-labelledby="visitTitle">
-      <div class="wrap reveal">
-        <p class="eyebrow">THE BLUE SKY LETTER</p>
-        <h2 class="section-title" id="visitTitle">把下一杯好咖啡，寄到你的日常裡。</h2>
-        <p class="section-copy">每月一封風味通信，分享新豆、沖煮靈感與只給會員的小小驚喜。</p>
-        <form class="subscribe-form" id="subscribeForm">
-          <input type="email" aria-label="電子郵件地址" placeholder="你的電子郵件地址" required>
-          <button type="submit">訂閱風味通信</button>
-        </form>
+    <!-- ==========================================================================
+         3. 品牌風格專題 (衣索比亞三大名產區風味故事)
+         ========================================================================== -->
+    <section class="section terroir-section" id="terroir">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow">ETHIOPIAN TERROIR & LORE</div>
+          <h2 class="section-title">
+            源自咖啡發源地：<span class="highlight">衣索比亞傳奇風土</span>
+          </h2>
+          <p class="section-desc">
+            宛如傳說對決艾森諾世界的遠古原力，衣索比亞高地孕育出全球最富花香與柑橘韻味的咖啡原生種。我們精選三大微批次莊園豆，為每位英雄調配專屬風味印記。
+          </p>
+        </div>
+
+        <div class="terroir-grid">
+          <!-- 產區 1: 耶加雪菲 -->
+          <div class="terroir-card">
+            <div class="terroir-icon-wrap">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+                <path d="M2 12h20"/>
+              </svg>
+            </div>
+            <div class="terroir-hero-tag">LIGHT ROAST · 花香聖光</div>
+            <h3 class="terroir-name">耶加雪菲 Yirgacheffe G1</h3>
+            <div class="terroir-flavor">
+              <span>🌸 茉莉白花 ｜ 🍋 佛手柑 ｜ 🍯 荔枝甜感</span>
+            </div>
+            <p class="terroir-desc">
+              生長於海拔 2,000 公尺以上的紅火山土壤，水洗處理帶來極致通透的白花香與清澈果酸。如同「蘿兒」降臨戰場時的光芒，純淨且令人神清氣爽。
+            </p>
+            <div class="terroir-stats-row">
+              <span>海拔：<strong>2,000 - 2,200m</strong></span>
+              <span>處理法：<strong>純淨全水洗</strong></span>
+            </div>
+          </div>
+
+          <!-- 產區 2: 西達摩 谷吉 -->
+          <div class="terroir-card">
+            <div class="terroir-icon-wrap">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+              </svg>
+            </div>
+            <div class="terroir-hero-tag">MEDIUM-LIGHT · 奔放果香</div>
+            <h3 class="terroir-name">西達摩 谷吉 Sidamo Guji</h3>
+            <div class="terroir-flavor">
+              <span>🍑 熟水蜜桃 ｜ 🍓 草莓果醬 ｜ 🍊 熱帶甜橙</span>
+            </div>
+            <p class="terroir-desc">
+              谷吉產區著名的慢速日曬工法，封存咖啡櫻桃飽滿的多汁甜感與濃郁花果香氣。如同神射手「堇」的子彈瞬間爆裂，充滿穿透力的層次感！
+            </p>
+            <div class="terroir-stats-row">
+              <span>海拔：<strong>1,900 - 2,150m</strong></span>
+              <span>處理法：<strong>精緻慢速日曬</strong></span>
+            </div>
+          </div>
+
+          <!-- 產區 3: 罕貝拉 莊園 -->
+          <div class="terroir-card">
+            <div class="terroir-icon-wrap">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+              </svg>
+            </div>
+            <div class="terroir-hero-tag">ANAEROBIC · 秘境微醺</div>
+            <h3 class="terroir-name">罕貝拉 Hambela 特殊批次</h3>
+            <div class="terroir-flavor">
+              <span>🍇 巨峰葡萄 ｜ 🫐 藍莓派 ｜ 🍷 朗姆酒香</span>
+            </div>
+            <p class="terroir-desc">
+              經由低溫厭氧發酵處理，展現深邃的紫色水果調與悠長的酒香餘韻。猶如刺客「莫拉」穿梭於時空裂隙，神祕莫測且讓人回味無窮。
+            </p>
+            <div class="terroir-stats-row">
+              <span>海拔：<strong>2,100 - 2,350m</strong></span>
+              <span>處理法：<strong>低溫厭氧日曬</strong></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         4. 傳說限定豆單與咖啡飲品 (吸引客戶消費咖啡)
+         ========================================================================== -->
+    <section class="section menu-section" id="menu">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow">AOV 10TH ANNIVERSARY BEVERAGE MENU</div>
+          <h2 class="section-title">
+            10 週年英雄聯名 · <span class="highlight">現萃咖啡豆單</span>
+          </h2>
+          <p class="section-desc">
+            全品項皆使用 100% 衣索比亞進口精品莊園豆，由自動咖啡機精確萃取。每杯隨單附贈「10 週年傳說英雄限定虛寶刮刮卡」一張！
+          </p>
+        </div>
+
+        <div class="beans-grid">
+          <!-- 咖啡 1: 蘿兒 耶加雪菲手沖 -->
+          <article class="bean-card">
+            <div class="bean-top-banner">
+              <span class="bean-hero-badge">【聖光聯名】</span>
+              <!-- 咖啡杯 SVG -->
+              <svg class="bean-svg-icon" viewBox="0 0 100 100" fill="none">
+                <circle cx="50" cy="50" r="44" fill="#2d1252" stroke="#a855f7" stroke-width="2"/>
+                <path d="M30 38H70L63 78C63 82 58 85 54 85H46C42 85 37 82 37 78L30 38Z" fill="#3e1a6e" stroke="#fbbf24" stroke-width="2"/>
+                <circle cx="50" cy="58" r="7" fill="#fbbf24"/>
+              </svg>
+            </div>
+            <div class="bean-content">
+              <div class="bean-origin">ETHIOPIA YIRGACHEFFE G1</div>
+              <h3 class="bean-name">【蘿兒·神聖裁決】耶加雪菲白花手沖黑咖啡</h3>
+              <div class="flavor-pills">
+                <span class="flavor-pill">茉莉花香</span>
+                <span class="flavor-pill">檸檬柑橘</span>
+                <span class="flavor-pill">清爽明亮</span>
+              </div>
+              <div class="virtual-bonus-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/><path d="M4 6v12a2 2 0 0 0 2 2h14v-4"/><circle cx="18" cy="12" r="2"/></svg>
+                <span>隨杯贈：蘿兒 10週年紀念造型抽獎卡</span>
+              </div>
+              <div class="bean-footer">
+                <div class="bean-price">NT$ 85 <small>/ 杯</small></div>
+                <button class="btn-buy-bean" onclick="addToCart('【蘿兒·神聖裁決】耶加雪菲手沖', 85, '蘿兒 10週年紀念造型抽獎卡')">
+                  ＋ 機台點單
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 咖啡 2: 莫拉 罕貝拉濃萃冷萃 -->
+          <article class="bean-card">
+            <div class="bean-top-banner">
+              <span class="bean-hero-badge">【時空聯名】</span>
+              <svg class="bean-svg-icon" viewBox="0 0 100 100" fill="none">
+                <circle cx="50" cy="50" r="44" fill="#1f0938" stroke="#7c3aed" stroke-width="2"/>
+                <rect x="35" y="30" width="30" height="50" rx="6" fill="#32145a" stroke="#c084fc" stroke-width="2"/>
+                <path d="M42 45H58M42 55H54" stroke="#fbbf24" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="bean-content">
+              <div class="bean-origin">ETHIOPIA HAMBELA ANAEROBIC</div>
+              <h3 class="bean-name">【莫拉·時空裂隙】罕貝拉厭氧冰滴冷萃咖啡</h3>
+              <div class="flavor-pills">
+                <span class="flavor-pill">巨峰葡萄</span>
+                <span class="flavor-pill">藍莓酒香</span>
+                <span class="flavor-pill">厚實甜感</span>
+              </div>
+              <div class="virtual-bonus-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/><path d="M4 6v12a2 2 0 0 0 2 2h14v-4"/><circle cx="18" cy="12" r="2"/></svg>
+                <span>隨杯贈：莫拉 專屬回城特效兌換序號</span>
+              </div>
+              <div class="bean-footer">
+                <div class="bean-price">NT$ 95 <small>/ 瓶</small></div>
+                <button class="btn-buy-bean" onclick="addToCart('【莫拉·時空裂隙】罕貝拉冰滴冷萃', 95, '莫拉 專屬回城特效兌換序號')">
+                  ＋ 機台點單
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 咖啡 3: 堇 西達摩氣泡美式 -->
+          <article class="bean-card">
+            <div class="bean-top-banner">
+              <span class="bean-hero-badge">【火力爆發】</span>
+              <svg class="bean-svg-icon" viewBox="0 0 100 100" fill="none">
+                <circle cx="50" cy="50" r="44" fill="#2d1252" stroke="#f59e0b" stroke-width="2"/>
+                <path d="M32 35L40 80C41 84 46 87 50 87C54 87 59 84 60 80L68 35H32Z" fill="#441a79" stroke="#fbbf24" stroke-width="2"/>
+                <circle cx="45" cy="50" r="3" fill="#38bdf8"/>
+                <circle cx="55" cy="62" r="2" fill="#38bdf8"/>
+              </svg>
+            </div>
+            <div class="bean-content">
+              <div class="bean-origin">ETHIOPIA GUJI NATURAL G1</div>
+              <h3 class="bean-name">【堇·重裝火力】西達摩谷吉 甜桃氣泡黑咖啡</h3>
+              <div class="flavor-pills">
+                <span class="flavor-pill">熟水蜜桃</span>
+                <span class="flavor-pill">微氣泡激爽</span>
+                <span class="flavor-pill">上分必喝</span>
+              </div>
+              <div class="virtual-bonus-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/><path d="M4 6v12a2 2 0 0 0 2 2h14v-4"/><circle cx="18" cy="12" r="2"/></svg>
+                <span>隨杯贈：堇 10週年限定動態頭像框</span>
+              </div>
+              <div class="bean-footer">
+                <div class="bean-price">NT$ 90 <small>/ 杯</small></div>
+                <button class="btn-buy-bean" onclick="addToCart('【堇·重裝火力】西達摩甜桃氣泡', 90, '堇 10週年限定動態頭像框')">
+                  ＋ 機台點單
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 咖啡 4: 圖倫 衣索比亞絲絨拿鐵 -->
+          <article class="bean-card">
+            <div class="bean-top-banner">
+              <span class="bean-hero-badge">【雷鳴尊爵】</span>
+              <svg class="bean-svg-icon" viewBox="0 0 100 100" fill="none">
+                <circle cx="50" cy="50" r="44" fill="#1b0832" stroke="#a855f7" stroke-width="2"/>
+                <path d="M30 40H70L64 80H36L30 40Z" fill="#381564" stroke="#c084fc" stroke-width="2"/>
+                <path d="M70 46H78C82 46 84 49 84 53C84 57 82 60 78 60H68" stroke="#fbbf24" stroke-width="2.5"/>
+              </svg>
+            </div>
+            <div class="bean-content">
+              <div class="bean-origin">ETHIOPIA HEIRLOOM RESERVE</div>
+              <h3 class="bean-name">【圖倫·雷鳴狂飆】衣索比亞極萃 絲絨燕麥拿鐵</h3>
+              <div class="flavor-pills">
+                <span class="flavor-pill">太妃糖甜</span>
+                <span class="flavor-pill">滑順燕麥</span>
+                <span class="flavor-pill">堅果可可</span>
+              </div>
+              <div class="virtual-bonus-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/><path d="M4 6v12a2 2 0 0 0 2 2h14v-4"/><circle cx="18" cy="12" r="2"/></svg>
+                <span>隨杯贈：史詩英雄造型自選箱抽獎序號</span>
+              </div>
+              <div class="bean-footer">
+                <div class="bean-price">NT$ 105 <small>/ 杯</small></div>
+                <button class="btn-buy-bean" onclick="addToCart('【圖倫·雷鳴狂飆】衣索比亞絲絨拿鐵', 105, '史詩英雄造型自選箱抽獎序號')">
+                  ＋ 機台點單
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         5. 用途專題：次世代智慧自動咖啡機特色與沖煮模擬器
+         ========================================================================== -->
+    <section class="section machine-feature-section" id="machine">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow">NEXT-GEN SMART VENDING TECH</div>
+          <h2 class="section-title">
+            用途核心：<span class="highlight">全自動無人智慧咖啡機</span>
+          </h2>
+          <p class="section-desc">
+            無需排隊、零接觸操作！傳說對決 10 週年專屬智慧自動咖啡機，結合頂級手沖演算法與高速物聯網技術，將精品咖啡館的職人手藝搬入街頭電競生活圈。
+          </p>
+        </div>
+
+        <div class="machine-grid">
+          <!-- 機台 4 大技術優勢 -->
+          <div class="machine-spec-list">
+            <div class="spec-item">
+              <div class="spec-num">01</div>
+              <div class="spec-text">
+                <h4>精密陶瓷平刀 · 現磨香氣完全鎖定</h4>
+                <p>每杯均為點單後 3 秒內原豆即磨，微米級均勻研磨度，防止刀盤高溫破壞衣索比亞細膩的茉莉與柑橘花果香。</p>
+              </div>
+            </div>
+
+            <div class="spec-item">
+              <div class="spec-num">02</div>
+              <div class="spec-text">
+                <h4>92.5°C 變頻智能注水 · 職人級手沖萃取</h4>
+                <p>三段式悶蒸與仿手沖螺旋注水曲線，精確控制粉水接觸時間與水溫，達到 SCA 金杯標準最佳萃取率 20%。</p>
+              </div>
+            </div>
+
+            <div class="spec-item">
+              <div class="spec-num">03</div>
+              <div class="spec-text">
+                <h4>45 秒零接觸急速出杯 · 手機掃碼秒取</h4>
+                <p>支援遊戲帳號綁定、LINE Pay、Apple Pay 與悠遊卡。手機掃描機台 QR Code 即刻製作，遊戲排隊中也能喝好咖啡。</p>
+              </div>
+            </div>
+
+            <div class="spec-item">
+              <div class="spec-num">04</div>
+              <div class="spec-text">
+                <h4>出杯即連線 · 螢幕掉落 10 週年限定虛寶</h4>
+                <p>每出杯一次，機台 27 吋 4K 觸控螢幕同步播放傳說對決 10 週年經典動畫，即時噴射虛寶兌換簡訊至召喚師手機！</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 互動沖煮模擬器 -->
+          <div class="simulator-card">
+            <div class="sim-header">
+              <h3>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/></svg>
+                機台沖煮參數模擬器
+              </h3>
+              <span class="tag-badge tag-gold">LIVE SIMULATOR</span>
+            </div>
+
+            <div class="sim-options">
+              <div class="sim-row">
+                <span>選擇溫層：</span>
+                <div class="sim-buttons" id="tempOptions">
+                  <button class="sim-btn-opt active" onclick="setSimOption(this)">熱萃 Hot (92°C)</button>
+                  <button class="sim-btn-opt" onclick="setSimOption(this)">極冷萃 Iced (4°C)</button>
+                </div>
+              </div>
+
+              <div class="sim-row">
+                <span>萃取濃度：</span>
+                <div class="sim-buttons" id="strengthOptions">
+                  <button class="sim-btn-opt" onclick="setSimOption(this)">柔順花香 (1:16)</button>
+                  <button class="sim-btn-opt active" onclick="setSimOption(this)">黃金平衡 (1:15)</button>
+                  <button class="sim-btn-opt" onclick="setSimOption(this)">排位爆能 (1:13)</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 機台動態螢幕 -->
+            <div class="sim-screen">
+              <div class="sim-screen-title" id="simStatusText">機台就緒 · 點擊啟動模擬自動萃取</div>
+              
+              <div class="sim-progress-bar-bg">
+                <div class="sim-progress-bar-fill" id="simProgress"></div>
+              </div>
+
+              <div class="sim-telemetry">
+                <div>艙內溫度：<strong id="simTempDisplay">92.5°C</strong></div>
+                <div>萃取秒數：<strong id="simTimeDisplay">0s</strong></div>
+                <div>水壓數值：<strong id="simBarDisplay">9.0 Bar</strong></div>
+              </div>
+            </div>
+
+            <button class="btn btn-purple" style="width: 100%;" id="startBrewBtn" onclick="runBrewSimulation()">
+              ▶ 啟動機台萃取模擬（45秒極速出杯）
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+       6. 傳說 10 週年限定周邊專區 (吸引客戶消費周邊)
+       ========================================================================== -->
+    <section class="section merch-section" id="merch">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow">OFFICIAL 10TH MERCHANDISE</div>
+          <h2 class="section-title">
+            傳說限定周邊 · <span class="highlight">召喚師必收珍藏</span>
+          </h2>
+          <p class="section-desc">
+            慶祝傳說對決邁入第十載！精選紫金主題限定隨行保溫杯、英雄盲盒公仔與產區掛耳禮盒，讓咖啡香伴隨每一次的傳奇登頂。
+          </p>
+        </div>
+
+        <div class="merch-grid">
+          <!-- 周邊 1: 紫金隨行保溫杯 -->
+          <article class="merch-card">
+            <div class="merch-thumb">
+              <span class="merch-badge">熱銷 NO.1</span>
+              <svg class="merch-svg" viewBox="0 0 100 100" fill="none">
+                <rect x="36" y="22" width="28" height="66" rx="8" fill="#2d1252" stroke="#fbbf24" stroke-width="2"/>
+                <path d="M30 18H70V24H30V18Z" fill="#4c1d95" stroke="#c084fc" stroke-width="1.5"/>
+                <circle cx="50" cy="50" r="8" fill="#fbbf24"/>
+                <path d="M47 50L53 50M50 47L50 53" stroke="#120524" stroke-width="2"/>
+              </svg>
+            </div>
+            <div class="merch-body">
+              <div class="merch-type">LIMITED DRINKWARE</div>
+              <h3 class="merch-title">【10週年典藏】紫金漸層真空保溫隨行杯 (500ml)</h3>
+              <p class="merch-features">醫療級 316 不鏽鋼內膽，長效保冰保溫 12 小時。雷雕 10 週年星輝浮雕。</p>
+              <div class="merch-footer">
+                <div class="merch-price">NT$ 590 <del>NT$ 790</del></div>
+                <button class="btn-buy-merch" onclick="addToCart('【10週年典藏】紫金真空保溫杯', 590, '專屬虛寶：10週年限定擊殺特效')">
+                  ＋ 預訂
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 周邊 2: 英雄盲盒隨機杯塞 -->
+          <article class="merch-card">
+            <div class="merch-thumb">
+              <span class="merch-badge">限量盲盒</span>
+              <svg class="merch-svg" viewBox="0 0 100 100" fill="none">
+                <rect x="25" y="28" width="50" height="50" rx="10" fill="#381564" stroke="#a855f7" stroke-width="2"/>
+                <path d="M50 40V64M38 52H62" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/>
+                <text x="50" y="76" fill="#c084fc" font-size="10" font-weight="900" text-anchor="middle">?</text>
+              </svg>
+            </div>
+            <div class="merch-body">
+              <div class="merch-type">COLLECTIBLE TOY</div>
+              <h3 class="merch-title">【限量盲盒】傳說英雄 Q版咖啡公仔杯塞 (全套6款隨機)</h3>
+              <p class="merch-features">莫拉、堇、蘿兒、圖倫、刀鋒寶貝、愛里。環保食品級矽膠，萌趣上分搭檔。</p>
+              <div class="merch-footer">
+                <div class="merch-price">NT$ 180 <del>NT$ 220</del></div>
+                <button class="btn-buy-merch" onclick="addToCart('【限量盲盒】傳說英雄咖啡杯塞', 180, '專屬虛寶：隨機英雄體驗卡包')">
+                  ＋ 購買
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 周邊 3: 衣索比亞濾掛禮盒 -->
+          <article class="merch-card">
+            <div class="merch-thumb">
+              <span class="merch-badge">精裝限定</span>
+              <svg class="merch-svg" viewBox="0 0 100 100" fill="none">
+                <rect x="24" y="30" width="52" height="48" rx="6" fill="#240c42" stroke="#f59e0b" stroke-width="2"/>
+                <path d="M24 45H76" stroke="#a855f7" stroke-width="1.5"/>
+                <circle cx="50" cy="58" r="6" fill="#fbbf24"/>
+              </svg>
+            </div>
+            <div class="merch-body">
+              <div class="merch-type">SPECIALTY DRIP BAG</div>
+              <h3 class="merch-title">【莊園精裝】衣索比亞產區濾掛咖啡禮盒 (10入紫晶盒)</h3>
+              <p class="merch-features">內含耶加雪菲×4、谷吉×3、罕貝拉×3。附 10 週年限定紀念燙金金屬書籤。</p>
+              <div class="merch-footer">
+                <div class="merch-price">NT$ 480 <del>NT$ 600</del></div>
+                <button class="btn-buy-merch" onclick="addToCart('【莊園精裝】衣索比亞濾掛禮盒', 480, '專屬虛寶：100點券抵用卡')">
+                  ＋ 訂購
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 周邊 4: 紫焰防潑水電競桌墊 -->
+          <article class="merch-card">
+            <div class="merch-thumb">
+              <span class="merch-badge">電競必備</span>
+              <svg class="merch-svg" viewBox="0 0 100 100" fill="none">
+                <rect x="18" y="32" width="64" height="42" rx="4" fill="#1d0735" stroke="#c084fc" stroke-width="2"/>
+                <path d="M22 64L38 46L54 58L78 38" stroke="#f59e0b" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="merch-body">
+              <div class="merch-type">GAMING ACCESSORY</div>
+              <h3 class="merch-title">【10週年限定】傳說紫焰超大防潑水滑鼠桌墊 (800×300mm)</h3>
+              <p class="merch-features">極致精密布面，不慎打翻咖啡一擦即淨。底部天然防滑橡膠，激戰不移位。</p>
+              <div class="merch-footer">
+                <div class="merch-price">NT$ 390 <del>NT$ 550</del></div>
+                <button class="btn-buy-merch" onclick="addToCart('【10週年限定】防潑水超大電競桌墊', 390, '專屬虛寶：排位不掉星卡×2')">
+                  ＋ 選購
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         7. 10 週年滿額抽獎輪盤 (Gacha Lottery System)
+         ========================================================================== -->
+    <section class="section gacha-section" id="gacha">
+      <div class="container">
+        <div class="gacha-box">
+          <!-- 左側說明與獎項清單 -->
+          <div class="gacha-info">
+            <div class="eyebrow" style="margin-left: 0;">ANNIVERSARY LUCKY DRAW</div>
+            <h3>
+              消費滿額 · 即轉即領<br>
+              <span style="color: var(--gold-glow);">10 週年傳說英雄大獎</span>
+            </h3>
+            <p>
+              凡於傳說對決智慧咖啡機消費咖啡或於本站預訂聯名周邊，單筆滿 <strong>NT$ 100</strong> 即享免費幸運輪盤抽獎 1 次！
+            </p>
+
+            <ul class="gacha-rewards-list">
+              <li class="gacha-reward-item">
+                <span class="reward-pill pill-ssr">特獎 SSR</span>
+                <span>【10週年典藏】傳說對決限定造型全套（任選一位英雄）</span>
+              </li>
+              <li class="gacha-reward-item">
+                <span class="reward-pill pill-sr">一獎 SR</span>
+                <span>【實體周邊】紫金漸層真空保溫杯＋盲盒公仔 1 組</span>
+              </li>
+              <li class="gacha-reward-item">
+                <span class="reward-pill pill-r">二獎 R</span>
+                <span>【咖啡兌換】自動咖啡機免費現萃手沖咖啡券 3 張</span>
+              </li>
+              <li class="gacha-reward-item">
+                <span class="reward-pill pill-r">幸運獎</span>
+                <span>【排位能量】排位不掉星卡 × 2 ＋ 英雄造型 50 點折價券</span>
+              </li>
+            </ul>
+
+            <button class="btn btn-gold" onclick="spinWheel()">
+              🎲 立即轉動輪盤抽獎
+            </button>
+          </div>
+
+          <!-- 右側轉盤實體 -->
+          <div class="wheel-container">
+            <div class="wheel-pointer"></div>
+            <div class="wheel-wrap" id="lotteryWheel">
+              <!-- 轉盤 SVG 扇區分佈 -->
+              <svg viewBox="0 0 300 300" width="100%" height="100%">
+                <!-- 扇區 1: 特獎 -->
+                <path d="M150 150 L150 0 A150 150 0 0 1 280 75 Z" fill="#7c3aed"/>
+                <!-- 扇區 2: 一獎 -->
+                <path d="M150 150 L280 75 A150 150 0 0 1 280 225 Z" fill="#f59e0b"/>
+                <!-- 扇區 3: 二獎 -->
+                <path d="M150 150 L280 225 A150 150 0 0 1 150 300 Z" fill="#4c1d95"/>
+                <!-- 扇區 4: 幸運獎 -->
+                <path d="M150 150 L150 300 A150 150 0 0 1 20 225 Z" fill="#9333ea"/>
+                <!-- 扇區 5: 咖啡券 -->
+                <path d="M150 150 L20 225 A150 150 0 0 1 20 75 Z" fill="#2e1065"/>
+                <!-- 扇區 6: 咖啡折價券 -->
+                <path d="M150 150 L20 75 A150 150 0 0 1 150 0 Z" fill="#c084fc"/>
+
+                <!-- 扇區文字標記 -->
+                <text x="210" y="55" fill="#fff" font-size="11" font-weight="900" transform="rotate(30, 210, 55)">特獎 SSR</text>
+                <text x="235" y="160" fill="#170b2c" font-size="11" font-weight="900" transform="rotate(90, 235, 160)">一獎 保溫杯</text>
+                <text x="195" y="245" fill="#fff" font-size="11" font-weight="900" transform="rotate(150, 195, 245)">二獎 咖啡券</text>
+                <text x="105" y="245" fill="#fff" font-size="11" font-weight="900" transform="rotate(210, 105, 245)">掉星卡×2</text>
+                <text x="50" y="150" fill="#f59e0b" font-size="11" font-weight="900" transform="rotate(270, 50, 150)">折價券50點</text>
+                <text x="95" y="60" fill="#170b2c" font-size="11" font-weight="900" transform="rotate(330, 95, 60)">咖啡折20</text>
+              </svg>
+            </div>
+            <button class="wheel-center-btn" onclick="spinWheel()">SPIN</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         8. 自動咖啡機全台據點 (Station Locator)
+         ========================================================================== -->
+    <section class="section stations-section" id="stations">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow">AOV SMART VENDING STATIONS</div>
+          <h2 class="section-title">
+            尋找身邊的 <span class="highlight">10 週年自動咖啡機</span>
+          </h2>
+          <p class="section-desc">
+            全台各大熱門商圈、電競旗艦館與高鐵轉運站全面進駐！快前往離你最近的機台，體驗極致衣索比亞現萃手沖。
+          </p>
+        </div>
+
+        <div class="stations-grid">
+          <!-- 機台 1: 台北信義威秀電競館 -->
+          <div class="station-card">
+            <div class="station-status-row">
+              <span class="station-badge-live">
+                <span class="pulse-dot"></span> 24H 營業中
+              </span>
+              <span class="tag-badge tag-purple">機台編號 #AOV-01</span>
+            </div>
+            <h3 class="station-name">台北 · 信義威秀電競旗艦站</h3>
+            <p class="station-address">
+              📍 台北市信義區松壽路 20 號 1F (中庭手扶梯旁)
+            </p>
+            <div class="station-features">
+              <span class="station-tag">現萃衣索比亞</span>
+              <span class="station-tag">支援全行動支付</span>
+              <span class="station-tag">限定周邊現貨展示</span>
+            </div>
+          </div>
+
+          <!-- 機台 2: 西門町六號出口旗艦站 -->
+          <div class="station-card">
+            <div class="station-status-row">
+              <span class="station-badge-live">
+                <span class="pulse-dot"></span> 24H 營業中
+              </span>
+              <span class="tag-badge tag-purple">機台編號 #AOV-02</span>
+            </div>
+            <h3 class="station-name">台北 · 西門町捷運 6 號出口站</h3>
+            <p class="station-address">
+              📍 台北市萬華區成都路 4 號 (徒步區廣場入口)
+            </p>
+            <div class="station-features">
+              <span class="station-tag">現萃衣索比亞</span>
+              <span class="station-tag">冰滴冷萃供應中</span>
+              <span class="station-tag">盲盒杯塞即時扭蛋</span>
+            </div>
+          </div>
+
+          <!-- 機台 3: 台中逢甲電競商場 -->
+          <div class="station-card">
+            <div class="station-status-row">
+              <span class="station-badge-live">
+                <span class="pulse-dot"></span> 24H 營業中
+              </span>
+              <span class="tag-badge tag-purple">機台編號 #AOV-03</span>
+            </div>
+            <h3 class="station-name">台中 · 逢甲歡樂電競廣場站</h3>
+            <p class="station-address">
+              📍 台中市西屯區文華路 100 號 (逢甲大學正門旁)
+            </p>
+            <div class="station-features">
+              <span class="station-tag">現萃衣索比亞</span>
+              <span class="station-tag">學生憑證享 9 折</span>
+              <span class="station-tag">排位挑戰專屬機台</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
+  <!-- ==========================================================================
+       9. 購物車側邊抽屜 (Slide-in Cart Drawer)
+       ========================================================================== -->
+  <div class="cart-drawer-overlay" id="cartOverlay" onclick="closeCart()"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="購物車明細">
+    <div class="cart-drawer-header">
+      <h3>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+        </svg>
+        機台點單與預約周邊
+      </h3>
+      <button class="close-cart-btn" onclick="closeCart()" aria-label="關閉購物車">✕</button>
+    </div>
+
+    <div class="cart-items-wrap" id="cartItemsList">
+      <div class="cart-empty-message">目前尚未選購任何咖啡或周邊商品！<br>快去挑選一杯熱騰騰的衣索比亞咖啡吧 ☕</div>
+    </div>
+
+    <div class="cart-drawer-footer">
+      <div class="cart-total-row">
+        <span>小計金額：</span>
+        <span class="cart-total-price" id="cartTotalPrice">NT$ 0</span>
+      </div>
+      <div class="cart-bonus-summary" id="cartBonusSummary">
+        🎁 累積獲得 10 週年限定虛寶序號：0 組
+      </div>
+      <button class="btn btn-gold" style="width: 100%;" onclick="checkout()">
+        確認送出 · 產出取餐 QR Code
+      </button>
+    </div>
+  </aside>
+
+  <!-- ==========================================================================
+       10. 抽獎 / 結帳成果彈出視窗 (Prize & Order Modal)
+       ========================================================================== -->
+  <div class="modal-overlay" id="prizeModal">
+    <div class="modal-content">
+      <svg class="modal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+      </svg>
+      <h3 class="modal-title" id="modalTitle">恭喜獲得傳說限定大獎！</h3>
+      <p class="modal-desc" id="modalDesc">
+        感謝召喚師支持傳說對決 10 週年咖啡限定活動！請憑以下虛寶兌換代碼至遊戲內「活動中心」進行兌換。
+      </p>
+
+      <div class="voucher-code-box" id="modalVoucherCode">
+        AOV10TH-HERO-9988
+      </div>
+
+      <button class="btn btn-purple" onclick="closeModal()">
+        確認並收下獎勵
+      </button>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       11. 頁尾資訊區 (Footer)
+       ========================================================================== -->
   <footer class="site-footer">
-    <div class="wrap footer-grid">
-      <div class="footer-brand">
-        <a class="brand" href="#top" aria-label="回到藍天咖啡首頁"><span class="brand-mark" aria-hidden="true">B</span><span class="brand-copy"><strong>藍天咖啡</strong><small>BLUE SKY COFFEE</small></span></a>
-        <p>為喜歡手沖咖啡的你，留下一段慢慢品味、微微放晴的時間。</p>
+    <div class="container">
+      <div class="footer-grid">
+        <!-- 品牌簡介 -->
+        <div class="footer-brand">
+          <div class="brand-logo" style="margin-bottom: 10px;">
+            <div class="logo-badge" style="width: 38px; height: 38px;">
+              <div class="logo-inner">⚔️</div>
+            </div>
+            <div class="brand-title-wrap">
+              <h1 style="font-size: 1.1rem;">傳說對決 <span>10TH</span></h1>
+              <div class="brand-sub">COFFEE STATION</div>
+            </div>
+          </div>
+          <p>
+            傳說對決 10 週年限定智慧自動咖啡機企劃。致力將衣索比亞極致花果香莊園豆，融入每一位召喚師的激戰日常，讓香醇伴隨榮耀登頂。
+          </p>
+        </div>
+
+        <!-- 快速導覽 -->
+        <div class="footer-col">
+          <h4>專題章節</h4>
+          <ul class="footer-links">
+            <li><a href="#terroir">衣索比亞三大風土</a></li>
+            <li><a href="#menu">英雄聯名現萃豆單</a></li>
+            <li><a href="#machine">次世代智慧咖啡機</a></li>
+            <li><a href="#merch">10 週年限定周邊</a></li>
+            <li><a href="#gacha">滿額抽限定虛寶</a></li>
+          </ul>
+        </div>
+
+        <!-- 服務與支援 -->
+        <div class="footer-col">
+          <h4>機台支援</h4>
+          <ul class="footer-links">
+            <li><a href="#stations">全台機台據點地圖</a></li>
+            <li><a href="#machine">聯動廠商合作</a></li>
+            <li><a href="#">虛寶兌換與序號查詢</a></li>
+            <li><a href="#">食品安全與咖啡豆檢驗報告</a></li>
+            <li><a href="#">客服常見問題 FAQ</a></li>
+          </ul>
+        </div>
+
+        <!-- 規格與作者資訊 -->
+        <div class="footer-col">
+          <h4>課程作業與規格資訊</h4>
+          <div class="footer-spec-box">
+            <p><strong>規格來源：</strong>WebSpec_11515213/specs/onepage1.md</p>
+            <p><strong>學生姓名：</strong>李柏賢</p>
+            <p><strong>學生學號：</strong>11515213</p>
+            <p><strong>品牌風格：</strong>衣索比亞咖啡豆</p>
+            <p><strong>品牌主色：</strong>紫色系 (Purple Palette)</p>
+            <p><strong>主要用途：</strong>自動咖啡機與傳說限定周邊推廣</p>
+          </div>
+        </div>
       </div>
-      <div>
-        <p class="footer-heading">EXPLORE</p>
-        <div class="footer-links"><a href="#story">我們的故事</a><a href="#coffee">本季選豆</a><a href="#brew">沖煮日常</a></div>
-      </div>
-      <div>
-        <p class="footer-heading">CONTACT</p>
-        <div class="footer-contact"><a href="mailto:hello@bluesky.coffee">hello@bluesky.coffee</a><span>台中市西屯區晨光路 100 號</span><span>每日 10:00 — 19:00</span></div>
+
+      <div class="footer-bottom">
+        <div>
+          © 2026 傳說對決 10 週年咖啡限定 ｜ Arena of Valor 10th Anniversary × Ethiopian Specialty Coffee. All rights reserved.
+        </div>
+        <div>
+          本專案為 AI 規格驅動網站開發作業成果展示，僅供教學展示使用。
+        </div>
       </div>
     </div>
-    <div class="wrap footer-bottom"><span>© 2025 BLUE SKY COFFEE. ALL RIGHTS RESERVED.</span><span>BREW SLOW · LIVE BRIGHT</span></div>
   </footer>
 
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-
+  <!-- ==========================================================================
+       12. 前端互動指令碼 (Vanilla ES6+ JavaScript)
+       ========================================================================== -->
   <script>
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    const toast = document.querySelector('#toast');
-    let toastTimer;
+    /* =========================
+       購物車資料結構與互動邏輯
+       ========================= */
+    let cart = [];
 
-    function closeMenu() {
-      navLinks.classList.remove('open');
-      menuToggle.setAttribute('aria-expanded', 'false');
-      menuToggle.setAttribute('aria-label', '開啟導覽選單');
-      menuToggle.textContent = '☰';
+    // 開啟與關閉購物車
+    function openCart() {
+      document.getElementById('cartDrawer').classList.add('active');
+      document.getElementById('cartOverlay').classList.add('active');
     }
 
-    menuToggle.addEventListener('click', () => {
-      const isOpen = navLinks.classList.toggle('open');
-      menuToggle.setAttribute('aria-expanded', String(isOpen));
-      menuToggle.setAttribute('aria-label', isOpen ? '關閉導覽選單' : '開啟導覽選單');
-      menuToggle.textContent = isOpen ? '×' : '☰';
-    });
-
-    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
-
-    function showToast(message) {
-      window.clearTimeout(toastTimer);
-      toast.textContent = message;
-      toast.classList.add('show');
-      toastTimer = window.setTimeout(() => toast.classList.remove('show'), 2600);
+    function closeCart() {
+      document.getElementById('cartDrawer').classList.remove('active');
+      document.getElementById('cartOverlay').classList.remove('active');
     }
 
-    document.querySelectorAll('[data-coffee]').forEach(button => {
-      button.addEventListener('click', () => showToast(`已將「${button.dataset.coffee}」加入你的收藏。`));
-    });
+    document.getElementById('openCartBtn').addEventListener('click', openCart);
 
-    document.querySelector('#subscribeForm').addEventListener('submit', event => {
-      event.preventDefault();
-      const form = event.currentTarget;
-      if (!form.checkValidity()) return;
-      form.reset();
-      showToast('謝謝訂閱，下一封晴朗的風味通信即將寄出。');
-    });
-
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const revealItems = document.querySelectorAll('.reveal');
-    if (reduceMotion || !('IntersectionObserver' in window)) {
-      revealItems.forEach(item => item.classList.add('visible'));
-    } else {
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: .12 });
-      revealItems.forEach(item => observer.observe(item));
+    // 加入購物車
+    function addToCart(title, price, bonus) {
+      const existing = cart.find(item => item.title === title);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ title, price, bonus, qty: 1 });
+      }
+      updateCartUI();
+      openCart();
     }
+
+    // 變更數量
+    function changeQty(index, delta) {
+      if (!cart[index]) return;
+      cart[index].qty += delta;
+      if (cart[index].qty <= 0) {
+        cart.splice(index, 1);
+      }
+      updateCartUI();
+    }
+
+    // 更新購物車顯示
+    function updateCartUI() {
+      const listContainer = document.getElementById('cartItemsList');
+      const badge = document.getElementById('cartCount');
+      const totalPriceEl = document.getElementById('cartTotalPrice');
+      const bonusSummaryEl = document.getElementById('cartBonusSummary');
+
+      const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+      const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+      badge.textContent = totalItems;
+      totalPriceEl.textContent = `NT$ ${totalPrice.toLocaleString()}`;
+      bonusSummaryEl.textContent = `🎁 累積獲得 10 週年限定虛寶序號：${totalItems} 組`;
+
+      if (cart.length === 0) {
+        listContainer.innerHTML = '<div class="cart-empty-message">目前尚未選購任何咖啡或周邊商品！<br>快去挑選一杯熱騰騰的衣索比亞咖啡吧 ☕</div>';
+        return;
+      }
+
+      listContainer.innerHTML = cart.map((item, idx) => `
+        <div class="cart-item">
+          <div class="cart-item-info">
+            <div class="cart-item-title">${item.title}</div>
+            <div class="cart-item-bonus">🎁 贈送：${item.bonus}</div>
+            <div class="cart-item-price">NT$ ${item.price} × ${item.qty} = NT$ ${item.price * item.qty}</div>
+          </div>
+          <div class="cart-qty-ctrl">
+            <button class="qty-btn" onclick="changeQty(${idx}, -1)">−</button>
+            <span style="font-weight: 700; color: #fff; min-width: 16px; text-align: center;">${item.qty}</span>
+            <button class="qty-btn" onclick="changeQty(${idx}, 1)">＋</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // 模擬結帳送出
+    function checkout() {
+      if (cart.length === 0) {
+        alert('您的選單還是空的，請先挑選咖啡或周邊！');
+        return;
+      }
+      const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+      const totalBonusCount = cart.reduce((sum, item) => sum + item.qty, 0);
+
+      const randomCode = 'AOV10-' + Math.random().toString(36).substring(2, 6).toUpperCase() + '-' + Math.random().toString(36).substring(2, 6).toUpperCase();
+
+      closeCart();
+      showModal(
+        '🎉 點單成功！機台取餐碼已產生',
+        `感謝召喚師！總計 NT$ ${totalPrice}，已獲得 ${totalBonusCount} 組 10 週年限定虛寶序號。請於機台感應手機取餐！`,
+        randomCode
+      );
+
+      // 清空購物車
+      cart = [];
+      updateCartUI();
+    }
+
+    /* =========================
+       沖煮模擬器 (Brewing Simulator)
+       ========================= */
+    let isBrewing = false;
+
+    function setSimOption(btn) {
+      if (isBrewing) return;
+      const parent = btn.parentElement;
+      parent.querySelectorAll('.sim-btn-opt').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+
+    function runBrewSimulation() {
+      if (isBrewing) return;
+      isBrewing = true;
+      const startBtn = document.getElementById('startBrewBtn');
+      const statusText = document.getElementById('simStatusText');
+      const progressBar = document.getElementById('simProgress');
+      const timeDisplay = document.getElementById('simTimeDisplay');
+      const barDisplay = document.getElementById('simBarDisplay');
+
+      startBtn.disabled = true;
+      startBtn.textContent = '⚡ 機台正在高速現磨萃取中...';
+
+      let step = 0;
+      const totalSteps = 45; // 模擬 45 秒極速出杯
+
+      const interval = setInterval(() => {
+        step += 1;
+        const percent = Math.min(100, Math.round((step / totalSteps) * 100));
+        progressBar.style.width = percent + '%';
+        timeDisplay.textContent = `${step}s`;
+
+        if (step <= 10) {
+          statusText.textContent = `[1/3] 瑞士陶瓷平刀高速研磨衣索比亞原生種咖啡豆 (${percent}%)`;
+          barDisplay.textContent = '1.2 Bar';
+        } else if (step <= 30) {
+          statusText.textContent = `[2/3] 92.5°C 變頻仿手沖三段式均勻注水悶蒸中 (${percent}%)`;
+          barDisplay.textContent = '9.2 Bar';
+        } else if (step < 45) {
+          statusText.textContent = `[3/3] 智能急速注入杯中 · 封蓋與列印 10 週年虛寶卡 (${percent}%)`;
+          barDisplay.textContent = '8.5 Bar';
+        } else {
+          clearInterval(interval);
+          statusText.textContent = '✅ 出杯完成！請取走您的傳說 10 週年限定現萃咖啡！';
+          startBtn.disabled = false;
+          startBtn.textContent = '▶ 再次啟動機台萃取模擬';
+          isBrewing = false;
+          
+          showModal(
+            '☕ 咖啡已由自動咖啡機出杯！',
+            '衣索比亞極致花果香撲鼻而來！機台螢幕已同步發送 10 週年限定虛寶卡至您的手機！',
+            'AOV-BREW-' + Math.random().toString(36).substring(2, 8).toUpperCase()
+          );
+        }
+      }, 70); // 縮時體驗
+    }
+
+    /* =========================
+       10 週年幸運轉盤 (Gacha Wheel)
+       ========================= */
+    let isSpinning = false;
+    let currentDegree = 0;
+
+    function spinWheel() {
+      if (isSpinning) return;
+      isSpinning = true;
+
+      const wheel = document.getElementById('lotteryWheel');
+      // 隨機旋轉 5~8 圈 + 隨機角度
+      const randomExtra = Math.floor(Math.random() * 360);
+      const totalRotation = 1800 + randomExtra;
+      currentDegree += totalRotation;
+
+      wheel.style.transform = `rotate(${currentDegree}deg)`;
+
+      setTimeout(() => {
+        isSpinning = false;
+        const prizeList = [
+          { title: '特獎 SSR！傳說對決 10 週年限定全套造型！', code: 'AOV10-SSR-SKIN99' },
+          { title: '一獎 SR！紫金真空保溫隨行杯 1 組！', code: 'AOV10-SR-CUP77' },
+          { title: '二獎！自動咖啡機免費手沖兌換券 × 3！', code: 'AOV10-FREE-COFFEE3' },
+          { title: '幸運獎！排位不掉星卡 × 2 ＋ 造型 50 點折價券！', code: 'AOV10-STAR-CARD2' },
+          { title: '特選咖啡優惠折抵 20 元序號！', code: 'AOV10-COFFEE-OFF20' }
+        ];
+
+        const won = prizeList[Math.floor(Math.random() * prizeList.length)];
+        showModal('🎉 輪盤中獎通知！', `恭喜召喚師抽中：【${won.title}】！請保存兌換碼兌獎。`, won.code);
+      }, 4200);
+    }
+
+    /* =========================
+       Modal 彈窗控制
+       ========================= */
+    function showModal(title, desc, code) {
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalDesc').textContent = desc;
+      document.getElementById('modalVoucherCode').textContent = code;
+      document.getElementById('prizeModal').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('prizeModal').classList.remove('active');
+    }
+
+    /* =========================
+       行動裝置選單切換
+       ========================= */
+    const mobileToggle = document.getElementById('mobileToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    mobileToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
   </script>
 </body>
 </html>
